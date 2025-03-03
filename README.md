@@ -31,7 +31,7 @@
 [nouvelle_branche] git push --set-upstream origin nouvelle_branche
 ```
 
-Cliquer sur le lien afficher
+Cliquer sur le lien affiché
 ```powershell
 remote:     Create a pull request for 'update_readme' on GitHub by visiting:
 remote:     https://github.com/LeoLChalot/UNIT-TEST-PHP-JS/pull/new/update_readme
