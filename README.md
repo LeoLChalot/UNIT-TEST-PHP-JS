@@ -6,11 +6,28 @@
   - [Présentation de l’entreprise cliente](#présentation-de-lentreprise-cliente)
 
 # Commande Github
-- `git branch nouvelle_branche`
-- `git checkout nouvelle_branche`
-- `git add .` ou `git add fichier.ext`
-- `git commit -m "message de commit" ` 
-- `git push --set-upstream origin nouvelle_branche`
+```powershell
+# Création d'une nouvelle branche
+[main] git branch nouvelle_branche
+
+# Déplacement vers la nouvelle branche
+[main] git checkout nouvelle_branche
+
+# Récupération des dernières mise à jours du repos
+[nouvelle_branche] git fetch origin
+
+# Récupération du contenu de la branche main à jour
+[nouvelle_branche] git merge origin/main
+
+# Ajout des fichier 
+[nouvelle_branche] git add .
+
+# Ajouter un message de commit
+[nouvelle_branche] git commit -m "message de commit"
+
+# Envoyer la mise à jour
+[nouvelle_branche] git push --set-upstream origin nouvelle_branche
+```
 
 Cliquer sur le lien afficher
 ```powershell
