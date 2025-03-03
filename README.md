@@ -4,6 +4,8 @@
 - [Commande Github](#commande-github)
 - [Hackathon](#hackathon)
   - [Présentation de l’entreprise cliente](#présentation-de-lentreprise-cliente)
+- [Technologies employées](#technologies-employées)
+- [Questions](#questions)
 
 # Commande Github
 ```powershell
@@ -31,8 +33,8 @@
 
 Cliquer sur le lien afficher
 ```powershell
-remote: Create a pull request for 'update_readme' on GitHub by visiting:
-remote:  https://github.com/LeoLChalot/UNIT-TEST-PHP-JS/pull/new/update_readme
+remote:     Create a pull request for 'update_readme' on GitHub by visiting:
+remote:     https://github.com/LeoLChalot/UNIT-TEST-PHP-JS/pull/new/update_readme
 ```
 
 # Hackathon
@@ -52,7 +54,7 @@ besoins. Actuellement, cette planification est gérée par le service administra
 d’affectation surviennent régulièrement, entraînant des situations problématiques :
 Certains employés se retrouvent assignés à plusieurs chantiers en même temps.
 
-- D’autres sont affectés à des chantiers qui ne correspondent pas à leurs compétences ou à la
+- D’autres sont affectés à des chantiers qui ne correspondent pas à leurs compétences ou à la planification initialement prévue.
 - planification initialement prévue.
 
 L’entreprise EP souhaite mettre en place une solution permettant d’optimiser et de fiabiliser l’affectation
@@ -60,3 +62,18 @@ des salariés sur les chantiers. L’objectif est d’éliminer les erreurs de p
 de l’administration et en garantissant une meilleure gestion des ressources humaines sur le terrain.
 Nous devons donc proposer une solution adaptée aux besoins spécifiques de l’entreprise, en prenant en
 compte ses contraintes organisationnelles et opérationnelles.
+
+# Technologies employées
+- Elèves
+  - Evan spécialement front
+  - Rémy fonctionnel
+  - Maxime fonctionnel
+  - Léo fonctionnel
+
+- Technos
+  - SGBD - MySQL
+  - OMR - PHP Symfony
+
+# Questions
+- Y a-t-il un nombre défini d'ouvrier par corps de métier ?
+- L'administration créé une ficher chantier (et défini à l'avance le nombre d'ouvriers)
