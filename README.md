@@ -1,3 +1,23 @@
+# Overview
+
+- [Overview](#overview)
+- [Commande Github](#commande-github)
+- [Hackathon](#hackathon)
+  - [Présentation de l’entreprise cliente](#présentation-de-lentreprise-cliente)
+
+# Commande Github
+- `git branch nouvelle_branche`
+- `git checkout nouvelle_branche`
+- `git add .` ou `git add fichier.ext`
+- `git commit -m "message de commit" ` 
+- `git push --set-upstream origin nouvelle_branche`
+
+Cliquer sur le lien afficher
+```powershell
+remote: Create a pull request for 'update_readme' on GitHub by visiting:
+remote:  https://github.com/LeoLChalot/UNIT-TEST-PHP-JS/pull/new/update_readme
+```
+
 # Hackathon
 En tant qu'intermédiaire, mon rôle est de mettre en relation des développeurs freelances avec des
 entreprises ayant des besoins spécifiques en solutions numériques. Aujourd’hui, j’ai constitué une équipe
