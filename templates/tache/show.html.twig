@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tache{% endblock %}
+
+{% block body %}
+    <h1>Tache</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tache.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ tache.description }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>{{ tache.statut }}</td>
+            </tr>
+            <tr>
+                <th>Date_de_debut</th>
+                <td>{{ tache.dateDeDebut ? tache.dateDeDebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_de_fin</th>
+                <td>{{ tache.dateDeFin ? tache.dateDeFin|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_tache_index') }}">Retour à l'index</a>
+
+    <a href="{{ path('app_tache_edit', {'id': tache.id}) }}">edit</a>
+
+    {{ include('tache/_delete_form.html.twig') }}
+{% endblock %}

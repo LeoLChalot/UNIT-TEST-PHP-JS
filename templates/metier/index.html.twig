@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Metier index{% endblock %}
+
+{% block body %}
+    <h1>Liste des métiers référencés</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Label</th>
+                <th class="action-column">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for metier in metiers %}
+            <tr>
+                <td>{{ metier.id }}</td>
+                <td>{{ metier.label }}</td>
+                <td>
+                    <a class="btn-edit" href="{{ path('app_metier_show', {'id': metier.id}) }}">voir</a>
+                    <a class="btn-preview" href="{{ path('app_metier_edit', {'id': metier.id}) }}">éditer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn-link" href="{{ path('app_metier_new') }}">Créer une fiche métier</a>
+{% endblock %}

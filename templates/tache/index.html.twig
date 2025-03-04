@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tache index{% endblock %}
+
+{% block body %}
+    <h1>Liste des tâches</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Statut</th>
+                <th>Date_de_debut</th>
+                <th>Date_de_fin</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tache in taches %}
+            <tr>
+                <td>{{ tache.description }}</td>
+                <td>{{ tache.statut }}</td>
+                <td>{{ tache.dateDeDebut ? tache.dateDeDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ tache.dateDeFin ? tache.dateDeFin|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_tache_show', {'id': tache.id}) }}">show</a>
+                    <a href="{{ path('app_tache_edit', {'id': tache.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn-link" href="{{ path('app_tache_new') }}">Ajouter une nouvelle tâche</a>
+{% endblock %}
