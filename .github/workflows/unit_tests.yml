@@ -1,33 +1,14 @@
-name: Run Unit Tests on Push
+name: CI
 
-# Déclencheur : Exécute le workflow lors d'un push sur n'importe quelle branche
 on: [push]
 
-# Définition des jobs
 jobs:
-  test:
-    # Nom du job
-    name: Run Unit Tests
-    # Environnement d'exécution (Ubuntu par défaut)
+  build-test:
     runs-on: ubuntu-latest
 
-    # Étapes du job
     steps:
-      # Étape 1 : Checkout du code
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      # Étape 2 : Configuration de l'environnement PHP
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2' # Remplacez par votre version de PHP
-          coverage: 'none' # Pas de couverture de code nécessaire ici
-
-      # Étape 3 : Installation des dépendances Composer
-      - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
-
-      # Étape 4 : Exécution des tests unitaires avec PHPUnit
-      - name: Run PHPUnit tests
-        run: ./vendor/bin/phpunit --testdox
+      - uses: actions/checkout@v3
+      - run: echo "The ${{ github.repository }} repository has been cloned to the runner."
+      - uses: php-actions/composer@v6
+      - run: echo "Composer dependencies have been installed"
+      - run: vendor/bin/phpunit
