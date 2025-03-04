@@ -33,6 +33,7 @@
         "symfony/property-info": "7.2.*",
         "symfony/runtime": "7.2.*",
         "symfony/security-bundle": "7.2.*",
+        "symfony/security-csrf": "7.2.*",
         "symfony/serializer": "7.2.*",
         "symfony/stimulus-bundle": "^2.23",
         "symfony/string": "7.2.*",
@@ -42,6 +43,7 @@
         "symfony/validator": "7.2.*",
         "symfony/web-link": "7.2.*",
         "symfony/yaml": "7.2.*",
+        "symfonycasts/verify-email-bundle": "^1.17.3",
         "twig/extra-bundle": "^2.12|^3.20",
         "twig/twig": "^2.12|^3.20"
     },
@@ -104,6 +106,7 @@
         }
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^4.0",
         "phpunit/phpunit": "^9.6.22",
         "symfony/browser-kit": "7.2.*",
         "symfony/css-selector": "7.2.*",
