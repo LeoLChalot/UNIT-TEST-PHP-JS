@@ -21,8 +21,8 @@
                 <td>{{ client.nom }}</td>
                 <td>{{ client.telephone }}</td>
                 <td>
-                    <a class="btn-edit" href="{{ path('app_client_show', {'id': client.id}) }}">voir</a>
-                    <a class="btn-preview" href="{{ path('app_client_edit', {'id': client.id}) }}">éditer</a>
+                    <a class="btn-preview" href="{{ path('app_client_show', {'id': client.id}) }}">voir</a>
+                    <a class="btn-edit" href="{{ path('app_client_edit', {'id': client.id}) }}">éditer</a>
                 </td>
             </tr>
         {% else %}
