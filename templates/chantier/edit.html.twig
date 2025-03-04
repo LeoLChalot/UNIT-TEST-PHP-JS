@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Chantier{% endblock %}
+
+{% block body %}
+    <h1>Edit Chantier</h1>
+
+    {{ include('chantier/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_chantier_index') }}">back to list</a>
+
+    {{ include('chantier/_delete_form.html.twig') }}
+{% endblock %}
