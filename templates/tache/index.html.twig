@@ -10,8 +10,7 @@
             <tr>
                 <th>Description</th>
                 <th>Statut</th>
-                <th>Date_de_debut</th>
-                <th>Date_de_fin</th>
+                <th>Chantier</th>
                 <th>Ouvrier(s)</th>
                 <th>actions</th>
             </tr>
@@ -21,8 +20,7 @@
             <tr>
                 <td>{{ tache.description }}</td>
                 <td>{{ tache.statut }}</td>
-                <td>{{ tache.dateDeDebut ? tache.dateDeDebut|date('Y-m-d') : '' }}</td>
-                <td>{{ tache.dateDeFin ? tache.dateDeFin|date('Y-m-d') : '' }}</td>
+                <td>{{ tache.getChantier.getNom }}</td>
                 <td>
                     {% for employe in tache.getEmployes %}
                         {{ employe.getNom() }}{% if not loop.last %}, {% endif %}
