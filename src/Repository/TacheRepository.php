@@ -2,39 +2,39 @@
 
 namespace App\Repository;
 
-use App\Entity\Salarie;
+use App\Entity\Tache;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Salarie>
+ * @extends ServiceEntityRepository<Tache>
  */
-class SalarieRepository extends ServiceEntityRepository
+class TacheRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Salarie::class);
+        parent::__construct($registry, Tache::class);
     }
 
 //    /**
-//     * @return Salarie[] Returns an array of Salarie objects
+//     * @return Tache[] Returns an array of Tache objects
 //     */
 //    public function findByExampleField($value): array
 //    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
+//        return $this->createQueryBuilder('t')
+//            ->andWhere('t.exampleField = :val')
 //            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
+//            ->orderBy('t.id', 'ASC')
 //            ->setMaxResults(10)
 //            ->getQuery()
 //            ->getResult()
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Salarie
+//    public function findOneBySomeField($value): ?Tache
 //    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
+//        return $this->createQueryBuilder('t')
+//            ->andWhere('t.exampleField = :val')
 //            ->setParameter('val', $value)
 //            ->getQuery()
 //            ->getOneOrNullResult()
