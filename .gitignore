@@ -29,3 +29,4 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+/assets/styles/leo_custom.css
