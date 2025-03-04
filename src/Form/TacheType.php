@@ -25,11 +25,11 @@ class TacheType extends AbstractType
             ])
             ->add('chantier', EntityType::class, [
                 'class' => Chantier::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nom',
             ])
             ->add('employes', EntityType::class, [
                 'class' => Employe::class,
-                'choice_label' => 'id',
+                'choice_label' => 'nom',
                 'multiple' => true,
             ])
         ;
