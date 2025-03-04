@@ -9,6 +9,8 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Nom</th>
+                <th>Responsable</th>
                 <th>Date de début</th>
                 <th>Date de fin</th>
                 <th>Actions</th>
@@ -18,11 +20,13 @@
         {% for chantier in chantiers %}
             <tr>
                 <td>{{ chantier.id }}</td>
+                <td>{{ chantier.nom }}</td>
+                <td>{{ chantier.getChefDeChantier.getNom }}</td>
                 <td>{{ chantier.dateDeDebut ? chantier.dateDeDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ chantier.dateDeFin ? chantier.dateDeFin|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_chantier_show', {'id': chantier.id}) }}">Voir</a>
-                    <a href="{{ path('app_chantier_edit', {'id': chantier.id}) }}">Modifier</a>
+                    <a class="btn-preview" href="{{ path('app_chantier_show', {'id': chantier.id}) }}">Voir</a>
+                    <a class="btn-edit" href="{{ path('app_chantier_edit', {'id': chantier.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_chantier_new') }}">Créer un nouveau chantier</a>
+    <a class="btn-link" href="{{ path('app_chantier_new') }}">Créer un nouveau chantier</a>
 {% endblock %}

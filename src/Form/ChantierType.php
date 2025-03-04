@@ -16,7 +16,9 @@ class ChantierType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        
+            ->add('nom', null, [
+                'label' => 'Nom du chantier',
+            ])
             ->add('date_de_debut', null, [
                 'widget' => 'single_text',
             ])
