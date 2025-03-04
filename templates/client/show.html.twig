@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Client{% endblock %}
+
+{% block body %}
+    <h1>Client</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ client.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ client.nom }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ client.telephone }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn-link" href="{{ path('app_client_index') }}">Retour à l'index</a>
+    <a class="btn-link" href="{{ path('app_client_edit', {'id': client.id}) }}">Edition</a>
+{% endblock %}

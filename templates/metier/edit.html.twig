@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Metier{% endblock %}
+
+{% block body %}
+    <h1>Métier - Edition</h1>
+
+    {{ include('metier/_form.html.twig', {'button_label': 'Actualiser'}) }}
+
+    <a class="btn-link" href="{{ path('app_metier_index') }}">Retour à l'index</a>
+
+    {{ include('metier/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Chantier{% endblock %}
+
+{% block body %}
+    <h1>Modifier le chantier</h1>
+
+    {{ include('chantier/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('app_chantier_index') }}">Retour à la liste</a>
+
+    {{ include('chantier/_delete_form.html.twig') }}
+{% endblock %}
