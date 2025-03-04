@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des employes{% endblock %}
+
+{% block body %}
+    <h1>Liste des employes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Telephone</th>
+                <th>Chef de chantier</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employe in employes %}
+            <tr>
+                <td>{{ employe.id }}</td>
+                <td>{{ employe.nom }}</td>
+                <td>{{ employe.prenom }}</td>
+                <td>{{ employe.telephone }}</td>
+                <td>{{ employe.estChefDeChantier ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_employe_show', {'id': employe.id}) }}" class="btn btn-info btn-sm">montrer</a>
+                    <a href="{{ path('app_employe_edit', {'id': employe.id}) }}" class="btn btn-info btn-sm">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_employe_new') }}">Ajouter employe</a>
+{% endblock %}
