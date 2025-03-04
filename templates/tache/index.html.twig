@@ -12,6 +12,7 @@
                 <th>Statut</th>
                 <th>Date_de_debut</th>
                 <th>Date_de_fin</th>
+                <th>Ouvrier(s)</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -23,8 +24,13 @@
                 <td>{{ tache.dateDeDebut ? tache.dateDeDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ tache.dateDeFin ? tache.dateDeFin|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a class="btn-show" href="{{ path('app_tache_show', {'id': tache.id}) }}">voir</a>
-                    <a class="btn-preview" href="{{ path('app_tache_edit', {'id': tache.id}) }}">éditer</a>
+                    {% for employe in tache.getEmployes %}
+                        {{ employe.getNom() }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>
+                    <a class="btn-preview" href="{{ path('app_tache_show', {'id': tache.id}) }}">voir</a>
+                    <a class="btn-edit" href="{{ path('app_tache_edit', {'id': tache.id}) }}">éditer</a>
                 </td>
             </tr>
         {% else %}

@@ -12,7 +12,7 @@ h1{
 
 table {
     width: 100%;
-    max-width: 600px;
+    /* max-width: 1024; */
     border-collapse: collapse;
     margin: 20px auto;
     font-size: 18px;

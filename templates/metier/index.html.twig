@@ -19,8 +19,8 @@
                 <td>{{ metier.id }}</td>
                 <td>{{ metier.label }}</td>
                 <td>
-                    <a class="btn-edit" href="{{ path('app_metier_show', {'id': metier.id}) }}">voir</a>
-                    <a class="btn-preview" href="{{ path('app_metier_edit', {'id': metier.id}) }}">éditer</a>
+                    <a class="btn-preview" href="{{ path('app_metier_show', {'id': metier.id}) }}">voir</a>
+                    <a class="btn-edit" href="{{ path('app_metier_edit', {'id': metier.id}) }}">éditer</a>
                 </td>
             </tr>
         {% else %}
