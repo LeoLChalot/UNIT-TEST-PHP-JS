@@ -1,17 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Chantier index{% endblock %}
+{% block title %}Liste des Chantiers{% endblock %}
 
 {% block body %}
-    <h1>Chantier index</h1>
+    <h1>Liste des Chantiers</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Date_de_debut</th>
-                <th>Date_de_fin</th>
-                <th>actions</th>
+                <th>ID</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,17 +21,17 @@
                 <td>{{ chantier.dateDeDebut ? chantier.dateDeDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ chantier.dateDeFin ? chantier.dateDeFin|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_chantier_show', {'id': chantier.id}) }}">show</a>
-                    <a href="{{ path('app_chantier_edit', {'id': chantier.id}) }}">edit</a>
+                    <a href="{{ path('app_chantier_show', {'id': chantier.id}) }}">Voir</a>
+                    <a href="{{ path('app_chantier_edit', {'id': chantier.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_chantier_new') }}">Create new</a>
+    <a href="{{ path('app_chantier_new') }}">Créer un nouveau chantier</a>
 {% endblock %}

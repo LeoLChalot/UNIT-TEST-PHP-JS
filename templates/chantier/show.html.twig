@@ -8,23 +8,23 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <td>{{ chantier.id }}</td>
             </tr>
             <tr>
-                <th>Date_de_debut</th>
+                <th>Date de début</th>
                 <td>{{ chantier.dateDeDebut ? chantier.dateDeDebut|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Date_de_fin</th>
+                <th>Date de fin</th>
                 <td>{{ chantier.dateDeFin ? chantier.dateDeFin|date('Y-m-d') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_chantier_index') }}">back to list</a>
+    <a href="{{ path('app_chantier_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_chantier_edit', {'id': chantier.id}) }}">edit</a>
+    <a href="{{ path('app_chantier_edit', {'id': chantier.id}) }}">Modifier</a>
 
     {{ include('chantier/_delete_form.html.twig') }}
 {% endblock %}

@@ -21,12 +21,7 @@ class EmployeType extends AbstractType
             ->add('est_chef_de_chantier')
             ->add('metier', EntityType::class, [
                 'class' => Metier::class,
-                'choice_label' => 'id',
-            ])
-            ->add('taches', EntityType::class, [
-                'class' => Tache::class,
-                'choice_label' => 'id',
-                'multiple' => true,
+                'choice_label' => 'label',
             ])
         ;
     }

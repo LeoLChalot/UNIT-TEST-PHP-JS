@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Employe{% endblock %}
+{% block title %}Employé{% endblock %}
 
 {% block body %}
-    <h1>Employe</h1>
+    <h1>Employé</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <td>{{ employe.id }}</td>
             </tr>
             <tr>
@@ -16,23 +16,23 @@
                 <td>{{ employe.nom }}</td>
             </tr>
             <tr>
-                <th>Prenom</th>
+                <th>Prénom</th>
                 <td>{{ employe.prenom }}</td>
             </tr>
             <tr>
-                <th>Telephone</th>
+                <th>Téléphone</th>
                 <td>{{ employe.telephone }}</td>
             </tr>
             <tr>
-                <th>Est_chef_de_chantier</th>
-                <td>{{ employe.estChefDeChantier ? 'Yes' : 'No' }}</td>
+                <th>Chef de chantier</th>
+                <td>{{ employe.estChefDeChantier ? 'Oui' : 'Non' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_employe_index') }}">back to list</a>
+    <a href="{{ path('app_employe_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_employe_edit', {'id': employe.id}) }}">edit</a>
+    <a href="{{ path('app_employe_edit', {'id': employe.id}) }}">Modifier</a>
 
     {{ include('employe/_delete_form.html.twig') }}
 {% endblock %}
