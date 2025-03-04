@@ -39,9 +39,13 @@ class Chantier
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date_tache_suivante = null;
+
     public function __construct()
     {
         $this->taches = new ArrayCollection();
+        $this->date_tache_suivante = $this->date_de_debut;
     }
 
     public function getId(): ?int
@@ -135,6 +139,18 @@ class Chantier
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getDateTacheSuivante(): ?\DateTimeInterface
+    {
+        return $this->date_tache_suivante;
+    }
+
+    public function setDateTacheSuivante(\DateTimeInterface $date_tache_suivante): static
+    {
+        $this->date_tache_suivante = $date_tache_suivante;
 
         return $this;
     }

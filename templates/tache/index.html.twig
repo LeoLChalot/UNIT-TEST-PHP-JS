@@ -3,41 +3,45 @@
 {% block title %}Tache index{% endblock %}
 
 {% block body %}
-    <h1>Liste des tâches</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Description</th>
-                <th>Statut</th>
-                <th>Chantier</th>
-                <th>Ouvrier(s)</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<h1>Liste des tâches</h1>
+{% for flashMessage in app.flashes('warning') %}
+<div class="alert alert-warning" role="alert">
+    {{ flashMessage }}
+</div>
+{% endfor %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Description</th>
+            <th>Statut</th>
+            <th>Chantier</th>
+            <th>Ouvrier(s)</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
         {% for tache in taches %}
-            <tr>
-                <td>{{ tache.description }}</td>
-                <td>{{ tache.statut }}</td>
-                <td>{{ tache.getChantier.getNom }}</td>
-                <td>
-                    {% for employe in tache.getEmployes %}
-                        {{ employe.getNom() }}{% if not loop.last %}, {% endif %}
-                    {% endfor %}
-                </td>
-                <td>
-                    <a class="btn-preview" href="{{ path('app_tache_show', {'id': tache.id}) }}">voir</a>
-                    <a class="btn-edit" href="{{ path('app_tache_edit', {'id': tache.id}) }}">éditer</a>
-                </td>
-            </tr>
+        <tr>
+            <td>{{ tache.description }}</td>
+            <td>{{ tache.statut }}</td>
+            <td>{{ tache.getChantier.getNom }}</td>
+            <td>
+                {% for employe in tache.getEmployes %}
+                {{ employe.getNom() }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                <a class="btn-preview" href="{{ path('app_tache_show', {'id': tache.id}) }}">voir</a>
+                <a class="btn-edit" href="{{ path('app_tache_edit', {'id': tache.id}) }}">éditer</a>
+            </td>
+        </tr>
         {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
+        <tr>
+            <td colspan="6">no records found</td>
+        </tr>
         {% endfor %}
-        </tbody>
-    </table>
+    </tbody>
+</table>
 
-    <a class="btn-link" href="{{ path('app_tache_new') }}">Ajouter une nouvelle tâche</a>
+<a class="btn-link" href="{{ path('app_tache_new') }}">Ajouter une nouvelle tâche</a>
 {% endblock %}

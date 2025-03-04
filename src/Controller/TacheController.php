@@ -34,6 +34,9 @@ final class TacheController extends AbstractController
             $entityManager->persist($tache);
 
             $chantier = $tache->getChantier();
+
+
+
             $dureeEnJours = (float) $tache->getDuree();
             $jours = (int) $dureeEnJours; // Partie entière (jours)
             $heures = (int) (($dureeEnJours - $jours) * 24); // Partie décimale en heures
@@ -42,13 +45,22 @@ final class TacheController extends AbstractController
             $dureeInterval = new \DateInterval("P{$jours}DT{$heures}H");
 
             // Calcule la date de fin en ajoutant la durée à la date de début du chantier
-            $startDate = $tache->getChantier()->getDateDeDebut();
+            $startDate = $tache->getChantier()->getDateTacheSuivante();
+            dump($startDate, $dureeInterval);
             $startDate = new \DateTime($startDate->format('Y-m-d'));
             $endDate = clone $startDate;
             $endDate->add($dureeInterval);
 
+
             // Définit la date de fin sur la tâche
             $tache->setDateDeFin($endDate);
+            $chantier->setDateTacheSuivante($endDate);
+
+            // Comparer la date de fin de la tâche avec celle du chantier
+            if ($tache->getDateDeFin() > $chantier->getDateDeFin()) {
+                // Ajouter un message flash pour alerter l'utilisateur
+                $this->addFlash('warning', 'Attention : La date de fin de la tâche dépasse la date de fin prévue du chantier.');
+            }
 
             // Message de succès avec la durée formatée
             $dureeFormatee = sprintf('%d jours et %d heures', $jours, $heures);
@@ -81,7 +93,7 @@ final class TacheController extends AbstractController
         return $this->render('tache/show.html.twig', [
             'tache' => $tache,
             'dureeFormatee' => sprintf('%d j et %d h', $jours, $heures),
-            'fin_prevue' => $fin_prevue->format('d/m/Y'),
+            'fin_prevue' => $tache->getDateDeFin()->format('d/m/Y'),
         ]);
     }
 
