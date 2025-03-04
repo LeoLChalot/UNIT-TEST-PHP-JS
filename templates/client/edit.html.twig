@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fiech Client{% endblock %}
+
+{% block body %}
+    <h1>Client - Edition</h1>
+
+    {{ include('client/_form.html.twig', {'button_label': 'Actualiser'}) }}
+
+    <a class="btn-link" href="{{ path('app_client_index') }}">Retour à l'index</a>
+
+    {{ include('client/_delete_form.html.twig') }}
+{% endblock %}
