@@ -23,8 +23,8 @@
                 <td>{{ tache.dateDeDebut ? tache.dateDeDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ tache.dateDeFin ? tache.dateDeFin|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_tache_show', {'id': tache.id}) }}">show</a>
-                    <a href="{{ path('app_tache_edit', {'id': tache.id}) }}">edit</a>
+                    <a class="btn-show" href="{{ path('app_tache_show', {'id': tache.id}) }}">voir</a>
+                    <a class="btn-preview" href="{{ path('app_tache_edit', {'id': tache.id}) }}">éditer</a>
                 </td>
             </tr>
         {% else %}
