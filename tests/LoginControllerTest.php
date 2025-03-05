@@ -45,7 +45,7 @@ class LoginControllerTest extends WebTestCase
         $this->client->request('GET', '/');
         self::assertResponseIsSuccessful();
 
-        $this->client->submitForm('Connexion', [
+        $this->client->submitForm('Sign in', [
             '_username' => 'doesNotExist@example.com',
             '_password' => '@3A42f6be3e6',
         ]);
@@ -66,7 +66,7 @@ class LoginControllerTest extends WebTestCase
         $this->client->request('GET', '/');
         self::assertResponseIsSuccessful();
 
-        $this->client->submitForm('Connexion', [
+        $this->client->submitForm('Sign in', [
             '_username' => 'l.larouchalot@gmail.com',
             '_password' => 'bad-password',
         ]);
@@ -88,7 +88,7 @@ class LoginControllerTest extends WebTestCase
         self::assertResponseIsSuccessful();
 
         // Success - Login with valid credentials is allowed.
-        $this->client->submitForm('Connexion', [
+        $this->client->submitForm('Sign in', [
             '_username' => 'l.larouchalot@gmail.com',
             '_password' => '@3A42f6be3e6',
         ]);

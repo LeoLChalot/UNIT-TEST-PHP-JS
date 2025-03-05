@@ -21,9 +21,7 @@ security:
         login_path: app_login
         check_path: app_login
         default_target_path: app_metier_index
-
         enable_csrf: true
-        default_target_path: app_chantier_index
       logout:
         path: app_logout
         # where to redirect after logout
