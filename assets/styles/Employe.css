@@ -1,0 +1,72 @@
+.BtnEmploye {
+    height: 4vh;
+    margin-top: 1vh;
+    margin-left: 5vw;
+    width: auto;
+    background-color: #23362F;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    border-radius: 15px;
+    color: white;
+    font-family: Avenir;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.table {
+    color: #23362F;
+}
+
+#employe {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.FormNewEmploye label {
+    margin-left: 5vw;
+    margin-top: 5vh;
+    font-family: Avenir;
+    font-weight: lighter;
+    font-size: 1.1rem;
+}
+
+.FormNewEmploye label:last-child {
+    margin-top: 10vh;
+}
+
+.FormNewEmploye input, .FormNewEmploye select {
+    margin-left: 5vw;
+    height: 5vh;
+    width: 30vw;
+    border: 1.5px solid #23362F;
+}
+
+.FormNewEmploye input:first-child {
+    margin-top: 9vh;
+    margin-left: 3.5vw;
+    width: 3vw;
+}
+
+.FormNewEmploye input:read-write {
+    padding-left: 1vw;
+}
+
+.FormNewEmploye button {
+    height: 4vh;
+    margin-top: 10%;
+    margin-left: 72vw;
+    width: auto;
+    background-color: #1F8861;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    border-radius: 15px;
+    color: white;
+    font-family: Avenir;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+}

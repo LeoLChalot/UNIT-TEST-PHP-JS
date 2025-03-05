@@ -1,0 +1,14 @@
+.TitlePage {
+    color: #23362F;
+    font-family: Avenir;
+    font-weight: bold;
+}
+
+.TitleBtn {
+    width: 100%;
+}
+
+.ROW {
+    display: flex;
+    flex-direction: row;
+}

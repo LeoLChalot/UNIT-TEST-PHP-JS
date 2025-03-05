@@ -1,4 +1,4 @@
-a{
+/* a{
     text-decoration: none;
 }
 
@@ -12,7 +12,7 @@ h1{
 
 table {
     width: 100%;
-    /* max-width: 1024; */
+    /* max-width: 1024; *//*
     border-collapse: collapse;
     margin: 20px auto;
     font-size: 18px;
@@ -208,6 +208,9 @@ form button[type="submit"]:hover {
 .btn-preview:hover {
     background-color: #0288d1;
     border-color: #0277bd;
+<<<<<<< HEAD
+}*/
+
 }
 
 .dashboard-wrapper {
@@ -276,3 +279,4 @@ hr {
 .logout-button:hover {
     background-color: #e74c3c;
 }
+

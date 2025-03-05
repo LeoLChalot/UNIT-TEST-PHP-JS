@@ -1,0 +1,40 @@
+.TitleLogin {
+    margin-top: 5vh;
+    color: #23362F;
+    font-size: 2.5rem;
+    font-family: Avenir;
+    font-weight: lighter;
+}
+
+.FormLogin label {
+    margin-left: 5vw;
+    margin-top: 5vh;
+    font-family: Avenir;
+    font-weight: lighter;
+    font-size: 1.1rem;
+}
+
+.FormLogin input {
+    margin-left: 5vw;
+    height: 5vh;
+    width: 30vw;
+    border: 1.5px solid #23362F;
+}
+
+.FormLogin input:read-write {
+    padding-left: 1vw;
+}
+
+.FormLogin button {
+    margin-top: 5vh;
+    margin-left: 20vw;
+    background-color: #23362F;
+    color: white;
+    cursor: pointer;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    border: none;
+    border-radius: 20px;
+}

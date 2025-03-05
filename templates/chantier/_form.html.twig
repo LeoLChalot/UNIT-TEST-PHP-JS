@@ -1,4 +1,31 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+<div class="group1">
+    {{ form_label(form.nom) }}
+    {{ form_widget(form.nom) }}
+</div>
+
+<div class="group1">
+    {{ form_label(form.date_de_debut) }}
+    {{ form_widget(form.date_de_debut) }}
+</div>
+
+<div class="group1">
+    {{ form_label(form.date_de_fin) }}
+    {{ form_widget(form.date_de_fin) }}
+</div>
+
+<div class="group1">
+    {{ form_label(form.chef_de_chantier) }}
+    {{ form_widget(form.chef_de_chantier) }}
+</div>
+
+<div class="group1">
+    {{ form_label(form.client) }}
+    {{ form_widget(form.client) }}
+</div>
+
+
+
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

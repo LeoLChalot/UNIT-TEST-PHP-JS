@@ -3,7 +3,11 @@
 {% block title %}Liste des employes{% endblock %}
 
 {% block body %}
-    <h1>Liste des employes</h1>
+    <div class="ROW">
+        <h1 class="TitlePage">Employés</h1>
+        <a class="BtnEmploye" href="{{ path('app_employe_new') }}">+ Ajouter un employé</a>
+    </div>
+
 
     <table class="table">
         <thead>
@@ -25,7 +29,7 @@
                 <td>{{ employe.prenom }}</td>
                 <td>{{ employe.telephone }}</td>
                 <td>{{ employe.getMetier.getLabel }}</td>
-                <td>{{ employe.estChefDeChantier ? 'Yes' : 'No' }}</td>
+                <td>{{ employe.estChefDeChantier ? 'Oui' : 'Non' }}</td>
                 <td>
                     <a class="btn-preview" href="{{ path('app_employe_show', {'id': employe.id}) }}" class="btn btn-info btn-sm">montrer</a>
                     <a class="btn-edit" href="{{ path('app_employe_edit', {'id': employe.id}) }}" class="btn btn-info btn-sm">modifier</a>
@@ -38,6 +42,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a class="btn-link" href="{{ path('app_employe_new') }}">Ajouter employe</a>
 {% endblock %}

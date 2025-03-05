@@ -3,9 +3,14 @@
 {% block title %}Nouveau Chantier{% endblock %}
 
 {% block body %}
-    <h1>Créer un nouveau chantier</h1>
+    <div class="ROW">
+        <h1 class="TitlePage">Créer un nouveau chantier</h1>
+        <a class="BtnEmploye" href="{{ path('app_chantier_index') }}">Retour à la liste</a>
+    </div>
 
-    {{ include('chantier/_form.html.twig') }}
+    <div class="FormNewEmploye">
+        {{ include('chantier/_form.html.twig') }}
+    </div>
 
-    <a href="{{ path('app_chantier_index') }}">Retour à la liste</a>
+
 {% endblock %}
