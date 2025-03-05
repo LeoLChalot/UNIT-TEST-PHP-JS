@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+    <div class="dashboard-wrapper">
+        <div class="dashboard">
+            <div class="dashboard-container">
+                <div class="card">
+                    <h2>Nombre d’employés</h2>
+                    <p>{{ nombreEmployes }}</p>
+                </div>
+                <div class="card">
+                    <h2>Chantiers terminés</h2>
+                    <p>{{ chantiersTermines }}</p>
+                </div>
+                <div class="card">
+                    <h2>Chantiers en cours</h2>
+                    <p>{{ chantiersEnCours }}</p>
+                </div>
+                <div class="card">
+                    <h2>Chantiers pas commencés</h2>
+                    <p>{{ chantiersPasCommences }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="user-info">
+            <h2>MA FICHE</h2>
+            <div class="user-details">
+                <p><strong>Email :</strong> {{ user.getUserIdentifier() }}</p>
+            </div>
+
+            <hr>
+
+            <div class="user-role">
+                <h3>MÉTIER</h3>
+                {% if 'ROLE_SUPER_ADMIN' in user.getRoles() %}
+                    <p class="role">Administrateur</p>
+                {% elseif 'ROLE_USER' in user.getRoles() %}
+                    <p class="role">Utilisateur</p>
+                {% else %}
+                    <p class="role">Rôle inconnu</p>
+                {% endif %}
+            </div>
+
+            <hr>
+
+            <div class="user-options">
+                <h3>OPTIONS</h3>
+                <a href="{{ path('app_logout') }}" class="logout-button">SE DÉCONNECTER</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
