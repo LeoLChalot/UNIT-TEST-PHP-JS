@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+
 	<form method="post">
 		{% if error %}
 			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -40,4 +41,5 @@
 			Sign in
 		</button>
 	</form>
+
 {% endblock %}

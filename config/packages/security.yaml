@@ -17,14 +17,17 @@ security:
       lazy: true
       provider: app_user_provider
       form_login:
+
         login_path: app_login
         check_path: app_login
         default_target_path: app_metier_index
+
         enable_csrf: true
+        default_target_path: app_chantier_index
       logout:
         path: app_logout
         # where to redirect after logout
-        target: app_login
+        target: homepage
 
       remember_me:
         secret: "%kernel.secret%"
