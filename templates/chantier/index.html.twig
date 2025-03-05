@@ -18,6 +18,7 @@
                 <th>Date de début</th>
                 <th>Date de fin</th>
                 <th>Tâches</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -41,6 +42,20 @@
                             <li>Aucune tâche</li>
                         {% endfor %}
                     </ul>
+                </td>
+                <td>
+                    {% set all_tasks_completed = true %}
+                    {% for tache in chantier.taches %}
+                        {% if tache.statut != 'terminé' %}
+                            {% set all_tasks_completed = false %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if all_tasks_completed %}
+                        <span>Terminé</span>
+                    {% else %}
+                        <span>En cours</span> 
+                    {% endif %}
                 </td>
                 <td>
                     <a class="btn-preview" href="{{ path('app_chantier_show', {'id': chantier.id}) }}">Voir</a>
