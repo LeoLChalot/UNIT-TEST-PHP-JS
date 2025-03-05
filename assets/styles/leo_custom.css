@@ -210,7 +210,7 @@ form button[type="submit"]:hover {
     border-color: #0277bd;
 <<<<<<< HEAD
 }*/
-=======
+
 }
 
 .dashboard-wrapper {
@@ -279,4 +279,4 @@ hr {
 .logout-button:hover {
     background-color: #e74c3c;
 }
->>>>>>> f05a7f51ddf58bddbdcc35546d6dff7910a56371
+
