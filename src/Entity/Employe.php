@@ -37,6 +37,9 @@ class Employe
     #[ORM\ManyToMany(targetEntity: Tache::class, mappedBy: 'employes')]
     private Collection $taches;
 
+    #[ORM\Column]
+    private ?bool $disponible = null;
+
     public function __construct()
     {
         $this->taches = new ArrayCollection();
@@ -130,6 +133,18 @@ class Employe
         if ($this->taches->removeElement($tach)) {
             $tach->removeEmploye($this);
         }
+
+        return $this;
+    }
+
+    public function isDisponible(): ?bool
+    {
+        return $this->disponible;
+    }
+
+    public function setDisponible(bool $disponible): static
+    {
+        $this->disponible = $disponible;
 
         return $this;
     }

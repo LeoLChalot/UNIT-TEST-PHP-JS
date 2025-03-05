@@ -33,7 +33,7 @@ class RegistrationControllerTest extends WebTestCase
     public function testRegister(): void
     {
         // Register a new user
-        $this->client->request('GET', '/register');
+        $this->client->request('GET', '/superadmin/register');
         self::assertResponseIsSuccessful();
         self::assertPageTitleContains('Register');
 

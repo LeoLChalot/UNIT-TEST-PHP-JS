@@ -1,52 +1,60 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Welcome!{% endblock %}</title>
 
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
 
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('assets/styles/leo_custom.css') }}">
-        {% endblock %}
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('assets/styles/leo_custom.css') }}">
+		{% endblock %}
 
-    <body>
-        <header class="p-4 bg-secondary text-white mb-4">
-            <div class="container">
-                {% block titleH1 %}
-                    <h1 class="text-center">
-                    </h1>
-                {% endblock %}
-                
-                <nav class="d-flex justify-content-between align-items-center mt-3">
-                    <a href="{{ path('app_login') }}" class="btn btn-outline-light">Connexion</a>
-                    <a href="{{ path('app_register') }}" class="btn btn-outline-light">Inscription</a>
-                    <a href="{{ path('app_metier_index') }}" class="btn btn-outline-light">Gestion Métiers</a>
-                    <a href="{{ path('app_client_index') }}" class="btn btn-outline-light">Gestion Client</a>
-                    <a href="{{ path('app_tache_index') }}" class="btn btn-outline-light">Gestion Tâche</a>
-                    <a href="{{ path('app_chantier_index') }}" class="btn btn-outline-light">Gestion Chantier</a>
-                    <a href="{{ path('app_employe_index') }}" class="btn btn-outline-light">Gestion Employé</a>
-                    <a href="{{ path('app_logout') }}" class="btn btn-danger ms-auto">Déconnexion</a>
-                </nav>
-            </div>
-        </header>
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+	</head>
 
-        <main class="container py-4">
-            {% block body %}{% endblock %}
-        </main>
+	<body>
+		{% if app.user is not null %}
+			<header class="p-4 bg-secondary text-white">
+				<div class="container">
+					{% block titleH1 %}
+						<h1 class="text-center"></h1>
+					{% endblock %}
 
-        <footer class="bg-secondary p-4 text-center text-light mt-auto fixed-bottom">
-            <div class="container">
-            </div>
-        </footer>
+					<nav class="d-flex justify-content-between align-items-center mt-3">
+						{% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
+							<a href="{{ path('app_register') }}" class="btn btn-outline-light">Création d'un administrateur</a>
+						{% endif %}
+						<a href="{{ path('app_metier_index') }}" class="btn btn-outline-light">Gestion Métiers</a>
+						<a href="{{ path('app_client_index') }}" class="btn btn-outline-light">Gestion Client</a>
+						<a href="{{ path('app_tache_index') }}" class="btn btn-outline-light">Gestion Tâche</a>
+						<a href="{{ path('app_chantier_index') }}" class="btn btn-outline-light">Gestion Chantier</a>
+						<a href="{{ path('app_employe_index') }}" class="btn btn-outline-light">Gestion Employé</a>
+						<a href="{{ path('app_dashboard') }}" class="btn btn-outline-light">Dashboard</a>
+						<a href="{{ path('app_logout') }}" class="btn btn-danger ms-auto">Déconnexion</a>
+					</nav>
+				</div>
+			</header>
+		{% endif %}
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYkCq36toKtQIYSGoZ8lt9cLf9C/9CUGz9FwxAIVWbzzRlnQ2dxA3VsmI" crossorigin="anonymous"></script>
-    </body>
-</html>
+		<main class="container py-2"> {% block body %}{% endblock %}
+			</main>
+
+			<footer class="bg-secondary p-4 text-center text-light mt-auto fixed-bottom">
+				<div class="container"></div>
+			</footer>
+
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYkCq36toKtQIYSGoZ8lt9cLf9C/9CUGz9FwxAIVWbzzRlnQ2dxA3VsmI" crossorigin="anonymous"></script>
+		</body>
+	</html>
+

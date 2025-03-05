@@ -20,12 +20,12 @@
                 <td>{{ tache.statut }}</td>
             </tr>
             <tr>
-                <th>Date_de_debut</th>
-                <td>{{ tache.dateDeDebut ? tache.dateDeDebut|date('Y-m-d') : '' }}</td>
+                <th>Duree</th>
+                <td>{{ dureeFormatee }}</td>
             </tr>
             <tr>
-                <th>Date_de_fin</th>
-                <td>{{ tache.dateDeFin ? tache.dateDeFin|date('Y-m-d') : '' }}</td>
+                <th>Date de fin prévue</th>
+                <td>{{ fin_prevue }}</td>
             </tr>
         </tbody>
     </table>

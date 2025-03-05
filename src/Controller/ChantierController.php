@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/chantier')]
+#[Route('/admin/chantier')]
 final class ChantierController extends AbstractController
 {
     #[Route(name: 'app_chantier_index', methods: ['GET'])]
@@ -31,6 +31,7 @@ final class ChantierController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($chantier);
+            $chantier->setDateTacheSuivante($chantier->getDateDeDebut());
             $entityManager->flush();
 
             return $this->redirectToRoute('app_chantier_index', [], Response::HTTP_SEE_OTHER);

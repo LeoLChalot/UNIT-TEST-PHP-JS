@@ -7,6 +7,7 @@ use App\Entity\Metier;
 use App\Entity\Tache;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -22,6 +23,13 @@ class EmployeType extends AbstractType
             ->add('metier', EntityType::class, [
                 'class' => Metier::class,
                 'choice_label' => 'label',
+            ])
+            ->add('disponible', ChoiceType::class, [
+                'choices' => [
+                    'Oui' => true,
+                    'Non' => false,
+                ],
+                'required' => true,
             ])
         ;
     }
