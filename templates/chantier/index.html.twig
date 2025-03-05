@@ -32,7 +32,11 @@
                 <td>
                     <ul>
                         {% for tache in chantier.taches %}
-                            <li>{{ tache.description }} : {{ tache.duree }} jour</li>
+                            <li>
+                                {{ tache.description }} : {{ tache.duree }} 
+                                jour{% if tache.duree > 1 %}s{% endif %} 
+                                ({{ tache.statut }})
+                            </li>
                         {% else %}
                             <li>Aucune tâche</li>
                         {% endfor %}

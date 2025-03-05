@@ -24,6 +24,10 @@
                 <td>{{ employe.telephone }}</td>
             </tr>
             <tr>
+                <th>Prof.</th>
+                <td>{{ employe.getMetier.getLabel }}</td>
+            </tr>
+            <tr>
                 <th>Chef de chantier</th>
                 <td>{{ employe.estChefDeChantier ? 'Oui' : 'Non' }}</td>
             </tr>

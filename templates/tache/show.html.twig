@@ -20,6 +20,18 @@
                 <td>{{ tache.statut }}</td>
             </tr>
             <tr>
+                <th>Chantier</th>
+                <td>{{ tache.getChantier.getNom }}</td>
+            </tr>
+            <tr>
+                <th>Ouvrier(s)</th>
+                <td>
+                    {% for employe in tache.getEmployes %}
+                        {{ employe.getNom() }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
                 <th>Duree</th>
                 <td>{{ dureeFormatee }}</td>
             </tr>

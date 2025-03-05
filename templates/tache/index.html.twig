@@ -16,6 +16,8 @@
             <th>Statut</th>
             <th>Chantier</th>
             <th>Ouvrier(s)</th>
+            <th>Durée</th>
+            <th>Date de fin prévue</th>
             <th>actions</th>
         </tr>
     </thead>
@@ -29,6 +31,12 @@
                 {% for employe in tache.getEmployes %}
                 {{ employe.getNom() }}{% if not loop.last %}, {% endif %}
                 {% endfor %}
+            </td>
+            <td>
+                {{ tache.duree }} jour{% if tache.duree > 1 %}s{% endif %}
+            </td>
+            <td>
+                {{ tache.dateDeFin ? tache.dateDeFin|date('Y-m-d') : 'Non définie' }}
             </td>
             <td>
                 <a class="btn-preview" href="{{ path('app_tache_show', {'id': tache.id}) }}">voir</a>
