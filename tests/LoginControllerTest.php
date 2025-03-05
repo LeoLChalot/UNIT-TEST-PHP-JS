@@ -68,11 +68,7 @@ class LoginControllerTest extends WebTestCase
         self::assertResponseIsSuccessful();
 
         $this->client->submitForm('Sign in', [
-<<<<<<< HEAD
-            '_username' => 'l.larouchalot@gmail.com',
-=======
             '_username' => 'admin@admin.fr',
->>>>>>> e6cab8f81c4d47207bb1d4b4b773a5d8de3afec8
             '_password' => 'bad-password',
         ]);
 
@@ -94,13 +90,8 @@ class LoginControllerTest extends WebTestCase
 
         // Success - Login with valid credentials is allowed.
         $this->client->submitForm('Sign in', [
-<<<<<<< HEAD
-            '_username' => 'l.larouchalot@gmail.com',
-            '_password' => '@3A42f6be3e6',
-=======
             '_username' => 'admin@admin.fr',
             '_password' => 'admin',
->>>>>>> e6cab8f81c4d47207bb1d4b4b773a5d8de3afec8
         ]);
 
         self::assertResponseRedirects('/admin/dashboard');
