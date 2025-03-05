@@ -40,9 +40,16 @@ class Employe
     #[ORM\Column]
     private ?bool $disponible = null;
 
+    /**
+     * @var Collection<int, Assignation>
+     */
+    #[ORM\OneToMany(mappedBy: 'employe', targetEntity: Assignation::class)]
+    private Collection $assignations;
+
     public function __construct()
     {
         $this->taches = new ArrayCollection();
+        $this->assignations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -146,6 +153,33 @@ class Employe
     {
         $this->disponible = $disponible;
 
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Assignation>
+     */
+    public function getAssignations(): Collection
+    {
+        return $this->assignations;
+    }
+
+    public function addAssignation(Assignation $assignation): self
+    {
+        if (!$this->assignations->contains($assignation)) {
+            $this->assignations[] = $assignation;
+            $assignation->setEmploye($this);
+        }
+        return $this;
+    }
+
+    public function removeAssignation(Assignation $assignation): self
+    {
+        if ($this->assignations->removeElement($assignation)) {
+            if ($assignation->getEmploye() === $this) {
+                $assignation->setEmploye(null);
+            }
+        }
         return $this;
     }
 }
