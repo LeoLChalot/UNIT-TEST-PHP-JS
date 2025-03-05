@@ -10,7 +10,7 @@
 /public/bundles/
 /var/
 /vendor/
-/migrations/
+# /migrations/
 /translations/
 
 ###< symfony/framework-bundle ###
