@@ -18,6 +18,10 @@ class ChantierType extends AbstractType
         $builder
             ->add('nom', null, [
                 'label' => 'Nom du chantier',
+                'attr' => [
+                    'placeholder' => 'Nom du chantier',
+                    'class' => 'aaaaaa'
+                ]
             ])
             ->add('date_de_debut', null, [
                 'widget' => 'single_text',
@@ -33,6 +37,9 @@ class ChantierType extends AbstractType
                               ->where('e.est_chef_de_chantier = :val')
                               ->setParameter('val', true);
                 },
+                'attr' => [
+                    'class' => 'aaaaaa'
+                ]
             ])
             ->add('client', EntityType::class, [
                 'class' => Client::class,
