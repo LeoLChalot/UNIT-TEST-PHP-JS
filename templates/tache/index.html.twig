@@ -4,11 +4,6 @@
 
 {% block body %}
 <h1>Liste des tâches</h1>
-{% for flashMessage in app.flashes('warning') %}
-<div class="alert alert-warning" role="alert">
-    {{ flashMessage }}
-</div>
-{% endfor %}
 <table class="table">
     <thead>
         <tr>
