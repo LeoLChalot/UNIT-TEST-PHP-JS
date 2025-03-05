@@ -14,9 +14,7 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email')
-<<<<<<< HEAD
-            ->add('password', "")
-=======
+
             ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Admin' => 'ROLE_ADMIN',
@@ -25,7 +23,6 @@ class UserType extends AbstractType
                 'multiple' => true, // Autorise plusieurs rôles
             ])
             ->add('password')
->>>>>>> f05a7f51ddf58bddbdcc35546d6dff7910a56371
         ;
     }
 
