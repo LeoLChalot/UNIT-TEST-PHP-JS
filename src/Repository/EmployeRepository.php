@@ -16,6 +16,14 @@ class EmployeRepository extends ServiceEntityRepository
         parent::__construct($registry, Employe::class);
     }
 
+    public function countEmployes(): int
+    {
+        return $this->createQueryBuilder('e')
+            ->select('COUNT(e.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     //    /**
     //     * @return Employe[] Returns an array of Employe objects
     //     */

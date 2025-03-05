@@ -7,8 +7,10 @@ use App\Entity\Employe;
 use App\Entity\Tache;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class TacheType extends AbstractType
 {
@@ -17,11 +19,16 @@ class TacheType extends AbstractType
         $builder
             ->add('description')
             ->add('statut')
-            ->add('date_de_debut', null, [
-                'widget' => 'single_text',
-            ])
-            ->add('date_de_fin', null, [
-                'widget' => 'single_text',
+            ->add('duree', NumberType::class, [
+                'html5' => true,
+                'attr' => ['step' => '0.25'],
+                'label'=> 'Durée en jours',
+                'scale' => 2,
+                'required' => true,
+                'constraints' => [
+                    new Assert\NotBlank(),
+                    new Assert\Positive(),
+                ],
             ])
             ->add('chantier', EntityType::class, [
                 'class' => Chantier::class,
