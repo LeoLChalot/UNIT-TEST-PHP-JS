@@ -33,8 +33,9 @@
 
 					<nav class="d-flex justify-content-between align-items-center mt-3">
 						{% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
-							<a href="{{ path('app_register') }}" class="btn btn-outline-light">Création d'un administrateur</a>
+							<a href="{{ path('app_user_index') }}" class="btn btn-outline-light">Gestion des utilisateurs</a>
 						{% endif %}
+						<a href="{{ path('app_dashboard') }}" class="btn btn-outline-light">Dashboard</a>
 						<a href="{{ path('app_metier_index') }}" class="btn btn-outline-light">Gestion Métiers</a>
 						<a href="{{ path('app_client_index') }}" class="btn btn-outline-light">Gestion Client</a>
 						<a href="{{ path('app_tache_index') }}" class="btn btn-outline-light">Gestion Tâche</a>
@@ -56,4 +57,3 @@
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYkCq36toKtQIYSGoZ8lt9cLf9C/9CUGz9FwxAIVWbzzRlnQ2dxA3VsmI" crossorigin="anonymous"></script>
 		</body>
 	</html>
-

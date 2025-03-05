@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier vos informations
+{% endblock %}
+
+{% block body %}
+	<h1>Modifier vos informations</h1>
+
+	{{ form_start(form) }}
+	{{ form_row(form.nom) }}
+	{{ form_row(form.prenom) }}
+	{{ form_row(form.telephone) }}
+	{{ form_row(form.email) }}
+	{{ form_row(form.plainPassword, {'label': 'Mot de passe'}) }}
+
+	<button class="btn btn-primary">Mettre à jour</button>
+	{{ form_end(form) }}
+{% endblock %}
