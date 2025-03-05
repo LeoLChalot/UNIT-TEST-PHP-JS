@@ -22,12 +22,6 @@ class Tache
     #[ORM\Column(length: 255)]
     private ?string $statut = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_de_debut = null;
-
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_de_fin = null;
-
     #[ORM\ManyToOne(inversedBy: 'taches')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Chantier $chantier = null;
@@ -37,6 +31,12 @@ class Tache
      */
     #[ORM\ManyToMany(targetEntity: Employe::class, inversedBy: 'taches')]
     private Collection $employes;
+
+    #[ORM\Column]
+    private ?float $duree = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date_de_fin = null;
 
     public function __construct()
     {
@@ -72,29 +72,7 @@ class Tache
         return $this;
     }
 
-    public function getDateDeDebut(): ?\DateTimeInterface
-    {
-        return $this->date_de_debut;
-    }
 
-    public function setDateDeDebut(\DateTimeInterface $date_de_debut): static
-    {
-        $this->date_de_debut = $date_de_debut;
-
-        return $this;
-    }
-
-    public function getDateDeFin(): ?\DateTimeInterface
-    {
-        return $this->date_de_fin;
-    }
-
-    public function setDateDeFin(\DateTimeInterface $date_de_fin): static
-    {
-        $this->date_de_fin = $date_de_fin;
-
-        return $this;
-    }
 
     public function getChantier(): ?Chantier
     {
@@ -128,6 +106,30 @@ class Tache
     public function removeEmploye(Employe $employe): static
     {
         $this->employes->removeElement($employe);
+
+        return $this;
+    }
+
+    public function getDuree(): ?float
+    {
+        return $this->duree;
+    }
+
+    public function setDuree(float $duree): static
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    public function getDateDeFin(): ?\DateTimeInterface
+    {
+        return $this->date_de_fin;
+    }
+
+    public function setDateDeFin(\DateTimeInterface $date_de_fin): self
+    {
+        $this->date_de_fin = $date_de_fin;
 
         return $this;
     }
