@@ -16,6 +16,38 @@ class ChantierRepository extends ServiceEntityRepository
         parent::__construct($registry, Chantier::class);
     }
 
+    public function countChantiersTermines(): int
+    {
+        return $this->createQueryBuilder('c')
+            ->select('COUNT(c.id)')
+            ->where('c.date_de_fin <= :today')
+            ->setParameter('today', new \DateTime())
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countChantiersEnCours(): int
+    {
+        return $this->createQueryBuilder('c')
+            ->select('COUNT(c.id)')
+            ->where('c.date_de_debut <= :today')
+            ->andWhere('c.date_de_fin > :today')
+            ->setParameter('today', new \DateTime())
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function countChantiersPasCommences(): int
+    {
+        return $this->createQueryBuilder('c')
+            ->select('COUNT(c.id)')
+            ->where('c.date_de_debut > :today')
+            ->setParameter('today', new \DateTime())
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+
     //    /**
     //     * @return Chantier[] Returns an array of Chantier objects
     //     */
