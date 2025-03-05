@@ -209,3 +209,70 @@ form button[type="submit"]:hover {
     background-color: #0288d1;
     border-color: #0277bd;
 }
+
+.dashboard-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+
+.dashboard {
+    flex: 2;
+    padding-right: 20px;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+    flex: 1;
+    background-color: #34495e;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-details, .user-role, .user-options {
+    margin-bottom: 20px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-color: white;
+    margin: 10px 0;
+}
+
+.role {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.logout-button {
+    display: inline-block;
+    background-color: #c0392b;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.logout-button:hover {
+    background-color: #e74c3c;
+}
