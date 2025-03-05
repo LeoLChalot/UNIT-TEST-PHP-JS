@@ -13,6 +13,7 @@
                 <th>Responsable</th>
                 <th>Date de début</th>
                 <th>Date de fin</th>
+                <th>Tâches</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,6 +25,15 @@
                 <td>{{ chantier.getChefDeChantier.getNom }}</td>
                 <td>{{ chantier.dateDeDebut ? chantier.dateDeDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ chantier.dateDeFin ? chantier.dateDeFin|date('Y-m-d') : '' }}</td>
+                <td>
+                    <ul>
+                        {% for tache in chantier.taches %}
+                            <li>{{ tache.description }} : {{ tache.duree }} jour</li>
+                        {% else %}
+                            <li>Aucune tâche</li>
+                        {% endfor %}
+                    </ul>
+                </td>
                 <td>
                     <a class="btn-preview" href="{{ path('app_chantier_show', {'id': chantier.id}) }}">Voir</a>
                     <a class="btn-edit" href="{{ path('app_chantier_edit', {'id': chantier.id}) }}">Modifier</a>
