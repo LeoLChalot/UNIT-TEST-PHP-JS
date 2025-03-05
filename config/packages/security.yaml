@@ -22,10 +22,11 @@ security:
         check_path: app_login
         default_target_path: app_metier_index
         enable_csrf: true
+
       logout:
         path: app_logout
         # where to redirect after logout
-        target: homepage
+        target: app_login
 
       remember_me:
         secret: "%kernel.secret%"
