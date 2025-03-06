@@ -40,7 +40,7 @@
     margin-top: 10vh;
 }
 
-.FormNewEmploye input, .FormNewEmploye select {
+.FormNewEmploye input, .FormNewEmploye select, .FormNewEmploye textarea {
     margin-left: 5vw;
     height: 5vh;
     width: 30vw;
@@ -55,6 +55,15 @@
 
 .FormNewEmploye input:read-write {
     padding-left: 1vw;
+}
+
+.FormNewEmploye textarea {
+    height: 10vh;
+}
+
+.selectMult {
+    border: none;
+    height: 10vh !important;
 }
 
 .FormNewEmploye button {

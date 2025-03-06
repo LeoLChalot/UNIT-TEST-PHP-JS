@@ -51,6 +51,10 @@ class TacheType extends AbstractType
                 'class' => Employe::class,
                 'choice_label' => 'nom',
                 'multiple' => true,
+                'label' => 'Employés',
+                'attr' => [
+                    'class' => 'selectMult'
+                ]
             ])
         ;
     }
