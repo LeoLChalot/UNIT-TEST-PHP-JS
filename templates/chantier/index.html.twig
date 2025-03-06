@@ -39,8 +39,11 @@
                     </ul>
                 </td>
                 <td>
-                    <a class="btn-preview" href="{{ path('app_chantier_show', {'id': chantier.id}) }}">Voir</a>
-                    <a class="btn-edit" href="{{ path('app_chantier_edit', {'id': chantier.id}) }}">Modifier</a>
+                    <div class="ROW">
+                        <a class="btn-preview" href="{{ path('app_chantier_show', {'id': chantier.id}) }}"><img class="btnListe" src="../Image/oeil.png"></a>
+                        <a class="btn-edit" href="{{ path('app_chantier_edit', {'id': chantier.id}) }}"><img class="btnListe" src="../Image/modif.png"></a>
+                        {{ include('chantier/_delete_form.html.twig') }}
+                    </div>
                 </td>
             </tr>
         {% else %}

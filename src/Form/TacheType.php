@@ -7,6 +7,7 @@ use App\Entity\Employe;
 use App\Entity\Tache;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +19,19 @@ class TacheType extends AbstractType
     {
         $builder
             ->add('description')
-            ->add('statut')
+            ->add('statut', ChoiceType::class, [
+                'choices' => [
+                    'En attente' => 'En attente',
+                    'En cours' => 'En cours',
+                    'Suspendue' => 'Suspendue',
+                    'Annulée' => 'Annulée',
+                    'Terminée' => 'Terminée',
+                ],
+                'required' => true,
+                'constraints' => [
+                    new Assert\NotBlank(),
+                ],
+            ])
             ->add('duree', NumberType::class, [
                 'html5' => true,
                 'attr' => ['step' => '0.25'],

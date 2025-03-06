@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listes des utilisateurs
+{% endblock %}
+
+{% block body %}
+<h1>Listes des utilisateurs</h1>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Nom</th>
+			<th>Prenom</th>
+			<th>Telephone</th>
+			<th>Email</th>
+			<th>Roles</th>
+			<th>actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for user in users %}
+		<tr>
+			<td>{{ user.nom }}</td>
+			<td>{{ user.prenom }}</td>
+			<td>{{ user.telephone }}</td>
+			<td>{{ user.email }}</td>
+			<td>
+				{% if 'ROLE_SUPER_ADMIN' in user.getRoles() %}
+				<p class="role">Super Administrateur</p>
+				{% elseif 'ROLE_ADMIN' in user.getRoles()%}
+				<p class="role">Administrateur</p>
+				{% elseif 'ROLE_USER' in user.getRoles() %}
+				<p class="role">Utilisateur</p>
+				{% else %}
+				<p class="role">Rôle inconnu</p>
+				{% endif %}
+			</td>
+			<td>
+				<a class="btn-link" href="{{ path('app_user_show', {'id': user.id}) }}">Voir détail du profil</a>
+				<a class="btn-link" href="{{ path('app_super_admin_edit', {'id': user.id}) }}">Modifier le profil</a>
+
+			</td>
+		</tr>
+		{% else %}
+		<tr>
+			<td colspan="8">no records found</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+<a class="btn-link" href="{{ path('app_user_new') }}">Création d'un nouvelle utilisateur</a>
+
+{% endblock %}

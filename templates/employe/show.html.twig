@@ -3,7 +3,12 @@
 {% block title %}Employé{% endblock %}
 
 {% block body %}
-    <h1>Employé</h1>
+    <div class="ROW">
+        <h1 class="TitlePage">Employé</h1>
+        <a class="BtnEmploye" href="{{ path('app_employe_index') }}">Retour à la liste des employés</a>
+        <a href="{{ path('app_employe_edit', {'id': employe.id}) }}"><img class="btnListe btnListeModifView" src="../../Image/modif.png"></a>
+    </div>
+
 
     <table class="table">
         <tbody>
@@ -24,15 +29,14 @@
                 <td>{{ employe.telephone }}</td>
             </tr>
             <tr>
+                <th>Prof.</th>
+                <td>{{ employe.getMetier.getLabel }}</td>
+            </tr>
+            <tr>
                 <th>Chef de chantier</th>
                 <td>{{ employe.estChefDeChantier ? 'Oui' : 'Non' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_employe_index') }}">Retour à la liste</a>
-
-    <a href="{{ path('app_employe_edit', {'id': employe.id}) }}">Modifier</a>
-
-    {{ include('employe/_delete_form.html.twig') }}
 {% endblock %}

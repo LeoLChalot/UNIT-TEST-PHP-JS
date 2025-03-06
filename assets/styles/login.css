@@ -1,3 +1,17 @@
+.GridLogin {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+}
+
+.TitleIndex {
+    margin-top: 5vh;
+    font-family: Avenir;
+    font-weight: lighter;
+    color: #23362F;
+    font-size: 1.2rem;
+}
+
 .TitleLogin {
     margin-top: 5vh;
     color: #23362F;
@@ -37,4 +51,26 @@
     padding-bottom: 1vh;
     border: none;
     border-radius: 20px;
+}
+
+.labelCheckbox {
+    padding-left: -100vw;
+}
+
+.inputCheckbox {
+    margin-top: 4vh;
+    width: 5vw;
+    margin-left: 20vw;
+}
+
+.gridCheckbox {
+    display: grid;
+    grid-template-columns: 5% 95%;
+}
+
+/* Deuxième partie */
+
+.ImageLogin {
+    margin-top: 15vh;
+    margin-left: 5vw;
 }

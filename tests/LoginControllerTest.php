@@ -129,9 +129,6 @@ class LoginControllerTest extends WebTestCase
 
     public function testAdminRegisterNoAccess(): void
     {
-        $this->client->setServerParameters([
-            'HTTP_HOST' => '127.0.0.1:8000',
-        ]);
     
         // Request the admin dashboard
         $this->client->request('GET', '/superadmin/register');

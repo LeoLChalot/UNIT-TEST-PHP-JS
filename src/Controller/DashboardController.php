@@ -13,7 +13,7 @@ final class DashboardController extends AbstractController
     #[Route('/admin/dashboard', name: 'app_dashboard')]
     public function index(EmployeRepository $employeRepository, ChantierRepository $chantierRepository, SecurityController $security): Response
     {
-        $user = $security->getUser(); 
+        $user = $this->getUser(); 
 
  
         $nombreEmployes = $employeRepository->countEmployes();
