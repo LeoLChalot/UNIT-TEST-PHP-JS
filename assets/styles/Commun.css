@@ -84,4 +84,19 @@ header {
     margin-left: 2vw;
 }
 
+.gridCol2 {
+    height: 60vh;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+}
+
+.BtnSubmit {
+    width: 30% !important;
+}
+
+.Col {
+    display: flex;
+    flex-direction: column;
+}
 

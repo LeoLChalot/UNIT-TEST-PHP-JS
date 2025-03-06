@@ -14,11 +14,11 @@
 	<thead>
 		<tr>
 			<th>Nom</th>
-			<th>Prenom</th>
-			<th>Telephone</th>
+			<th>Prénom</th>
+			<th>Téléphone</th>
 			<th>Email</th>
-			<th>Roles</th>
-			<th>actions</th>
+			<th>Rôles</th>
+			<th>Actions</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -30,19 +30,23 @@
 			<td>{{ user.email }}</td>
 			<td>
 				{% if 'ROLE_SUPER_ADMIN' in user.getRoles() %}
-				<p class="role">Super Administrateur</p>
+				<p class="red">Super Administrateur</p>
 				{% elseif 'ROLE_ADMIN' in user.getRoles()%}
-				<p class="role">Administrateur</p>
+				<p class="red">Administrateur</p>
 				{% elseif 'ROLE_USER' in user.getRoles() %}
-				<p class="role">Utilisateur</p>
+				<p class="">Utilisateur</p>
 				{% else %}
-				<p class="role">Rôle inconnu</p>
+				<p class="">Rôle inconnu</p>
 				{% endif %}
 			</td>
 			<td>
-				<a class="btn-link" href="{{ path('app_user_show', {'id': user.id}) }}"><img class="btnListe" src="../Image/oeil.png"></a>
-				<a class="btn-link" href="{{ path('app_super_admin_edit', {'id': user.id}) }}"><img class="btnListe" src="../Image/modif.png"></a>
-
+				<div class="ROW">
+					<a class="btn-link" href="{{ path('app_user_show', {'id': user.id}) }}"><img class="btnListe" src="../../Image/oeil.png"></a>
+					<a class="btn-link" href="{{ path('app_super_admin_edit', {'id': user.id}) }}"><img class="btnListe" src="../../Image/modif.png"></a>
+					{% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
+						{{ include('user/_delete_form.html.twig') }}
+					{% endif %}
+				</div>
 			</td>
 		</tr>
 		{% else %}

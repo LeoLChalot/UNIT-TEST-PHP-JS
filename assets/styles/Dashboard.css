@@ -29,6 +29,7 @@
     text-align: center;
     font-weight: bold;
     font-size: 5rem;
+    bottom: 2vw;
 }
 
 .black {
@@ -67,16 +68,20 @@
 }
 
 .user-options {
-
+    text-align: center;
 }
 
 .user-options a {
-    padding-top: 10vh;
     width: 100vw;
-    margin-left: 0.7vw;
     padding: 1vh 2vw 1vh 2vw;
     color: white;
     background-color: #B0413E;
     text-decoration: none;
     text-align: center;
+}
+
+.BtnDetails {
+
+    background-color: #375e4f !important;
+
 }
