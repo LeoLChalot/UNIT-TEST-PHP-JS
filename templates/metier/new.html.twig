@@ -3,9 +3,15 @@
 {% block title %}New Metier{% endblock %}
 
 {% block body %}
-    <h1>Ajouter un métier</h1>
+    <div class="ROW">
+        <h1 class="TitlePage">Ajouter un métier</h1>
+        <a class="BtnEmploye" href="{{ path('app_metier_index') }}">Retour à la liste des métiers</a>
+    </div>
 
-    {{ include('metier/_form.html.twig') }}
+    <div class="FormNewEmploye">
+        {{ include('metier/_form.html.twig') }}
+    </div>
 
-    <a class="btn-link" href="{{ path('app_metier_index') }}">Retour à l'index</a>
+
+
 {% endblock %}

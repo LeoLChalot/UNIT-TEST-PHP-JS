@@ -3,11 +3,14 @@
 {% block title %}Fiech Client{% endblock %}
 
 {% block body %}
-    <h1>Client - Edition</h1>
+    <div class="ROW">
+        <h1 class="TitlePage">Modifier le client</h1>
+        <a class="BtnEmploye" href="{{ path('app_client_index') }}">Retour à la liste des clients</a>
+    </div>
 
-    {{ include('client/_form.html.twig', {'button_label': 'Actualiser'}) }}
+    <div class="FormNewEmploye">
+        {{ include('client/_form.html.twig', {'button_label': 'Actualiser'}) }}
+    </div>
 
-    <a class="btn-link" href="{{ path('app_client_index') }}">Retour à l'index</a>
 
-    {{ include('client/_delete_form.html.twig') }}
 {% endblock %}
