@@ -31,8 +31,11 @@ class Employe
     #[ORM\JoinColumn(nullable: false)]
     private ?Metier $metier = null;
 
-    #[ORM\OneToOne(mappedBy: 'chef_de_chantier', targetEntity: Chantier::class)]
-    private ?Chantier $chantierDirige = null;
+    /**
+     * @var Collection<int, Chantier>
+     */
+    #[ORM\OneToMany(mappedBy: 'chef_de_chantier', targetEntity: Chantier::class)]
+    private Collection $chantiersDiriges;
 
     /**
      * @var Collection<int, Tache>
@@ -53,6 +56,7 @@ class Employe
     {
         $this->taches = new ArrayCollection();
         $this->assignations = new ArrayCollection();
+        $this->chantiersDiriges = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -104,6 +108,35 @@ class Employe
     public function setEstChefDeChantier(bool $est_chef_de_chantier): static
     {
         $this->est_chef_de_chantier = $est_chef_de_chantier;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Chantier>
+     */
+    public function getChantiersDiriges(): Collection
+    {
+        return $this->chantiersDiriges;
+    }
+
+    public function addChantierDirige(Chantier $chantier): static
+    {
+        if (!$this->chantiersDiriges->contains($chantier)) {
+            $this->chantiersDiriges->add($chantier);
+            $chantier->setChefDeChantier($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChantierDirige(Chantier $chantier): static
+    {
+        if ($this->chantiersDiriges->removeElement($chantier)) {
+            if ($chantier->getChefDeChantier() === $this) {
+                $chantier->setChefDeChantier(null);
+            }
+        }
 
         return $this;
     }
