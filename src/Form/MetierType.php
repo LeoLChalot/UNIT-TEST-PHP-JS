@@ -13,7 +13,7 @@ class MetierType extends AbstractType
     {
         $builder
             ->add('label', null, [
-                "label" => "Nom du métier",
+                "label" => "Nom du métier :",
                 ])
         ;
     }

@@ -18,8 +18,9 @@ class TacheType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('description')
+            ->add('description', null, ['label' => 'Description :'])
             ->add('statut', ChoiceType::class, [
+                'label' => 'Statut :',
                 'choices' => [
                     'En attente' => 'En attente',
                     'En cours' => 'En cours',
@@ -35,7 +36,7 @@ class TacheType extends AbstractType
             ->add('duree', NumberType::class, [
                 'html5' => true,
                 'attr' => ['step' => '0.25'],
-                'label'=> 'Durée en jours',
+                'label'=> 'Durée en jours :',
                 'scale' => 2,
                 'required' => true,
                 'constraints' => [
@@ -44,6 +45,7 @@ class TacheType extends AbstractType
                 ],
             ])
             ->add('chantier', EntityType::class, [
+                'label' => 'Chantier :',
                 'class' => Chantier::class,
                 'choice_label' => 'nom',
             ])
@@ -51,7 +53,7 @@ class TacheType extends AbstractType
                 'class' => Employe::class,
                 'choice_label' => 'nom',
                 'multiple' => true,
-                'label' => 'Employés',
+                'label' => 'Employés :',
                 'attr' => [
                     'class' => 'selectMult'
                 ]
