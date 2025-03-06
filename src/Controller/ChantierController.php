@@ -22,6 +22,8 @@ final class ChantierController extends AbstractController
         ]);
     }
 
+
+
     #[Route('/new', name: 'app_chantier_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -32,7 +34,15 @@ final class ChantierController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($chantier);
 
+            if ($chantier->getDateDeFin() <= $chantier->getDateDeDebut()) {
+                $this->addFlash('error', 'La date de fin doit être supérieure à la date de début.');
+                return $this->redirectToRoute('app_chantier_new');
+            }
 
+            if ($chantier->getDateDeDebut() < new \DateTime()) {
+                $this->addFlash('error', 'La date de début doit être supérieure ou égale à la date actuelle.');
+                return $this->redirectToRoute('app_chantier_new');
+            }
 
             $chantier->setDateTacheSuivante($chantier->getDateDeDebut());
             $entityManager->flush();
