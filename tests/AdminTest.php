@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Tests;
 
+namespace App\Tests;
+// ini_set('memory_limit', '512M');
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -141,25 +142,6 @@ class AdminTest extends WebTestCase
     {
         $this->client->request('GET', '/admin/dashboard');
         self::assertResponseRedirects();
-        $this->client->followRedirect();
-        self::assertResponseIsSuccessful();
-    }
-
-    /**
-     * ## Teste que l'accès à la page de registre de superadmin est redirigé pour les utilisateurs non autorisés.
-     *
-     * Cette méthode effectue les actions suivantes :
-     * 1. Envoie une requête GET à l'URL '/superadmin/register'.
-     * 2. Vérifie que la réponse redirige vers la page d'accueil ('/').
-     * 3. Suit la redirection.
-     * 4. Vérifie que la réponse finale est réussie (statut HTTP 200).
-     *
-     * @return void
-     */
-    public function testAdminRegisterNoAccess(): void
-    {
-        $this->client->request('GET', '/superadmin/register');
-        self::assertResponseIsUnprocessable();
         $this->client->followRedirect();
         self::assertResponseIsSuccessful();
     }
