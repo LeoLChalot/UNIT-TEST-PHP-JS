@@ -11,7 +11,7 @@
 			{{ user.nom }}
 			{{user.prenom}}
 		</h1>
-		<a href="{{ path('app_user_index') }}" class="BtnEmploye">Retour à la liste</a>
+		<a href="{{ path('app_user_index') }}" class="BtnEmploye a-btn">Retour à la liste</a>
 	</div>
 	{{ form_start(form) }}
 <div class="FormNewEmploye gridCol2">
@@ -27,7 +27,7 @@
 		{{ form_row(form.roles) }}
 	</div>
 
-	<button class="BtnSubmit">Mettre à jour</button>
+	<button  class="form-btn-add">Mettre à jour</button>
 
 </div>
 	{{ form_end(form) }}
