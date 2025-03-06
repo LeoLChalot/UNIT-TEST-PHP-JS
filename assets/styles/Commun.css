@@ -28,7 +28,7 @@ header {
 }
 
 .navBase {
-    margin-left: 5vw;
+    margin-left: -4vw;
 }
 
 .btnHeader, .btnCentralHeader {
@@ -38,11 +38,13 @@ header {
 }
 
 .btnCentralHeader {
+    width: 16vw;
     font-weight: bold;
     padding: 1vh 5vw 1vh 5vw;
     color: white;
     background-color: #23362F;
     border-radius: 15px;
+    text-align: center;
 }
 
 .btnCentralHeaderLogout {

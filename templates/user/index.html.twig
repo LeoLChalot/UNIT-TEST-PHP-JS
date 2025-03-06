@@ -4,7 +4,12 @@
 {% endblock %}
 
 {% block body %}
-<h1>Listes des utilisateurs</h1>
+	<div class="ROW">
+		<h1 class="TitlePage">Liste des utilisateurs</h1>
+		<a class="BtnEmploye" href="{{ path('app_user_new') }}">+ Créer un nouvel utilisateur</a>
+	</div>
+
+
 <table class="table">
 	<thead>
 		<tr>
@@ -35,8 +40,8 @@
 				{% endif %}
 			</td>
 			<td>
-				<a class="btn-link" href="{{ path('app_user_show', {'id': user.id}) }}">Voir détail du profil</a>
-				<a class="btn-link" href="{{ path('app_super_admin_edit', {'id': user.id}) }}">Modifier le profil</a>
+				<a class="btn-link" href="{{ path('app_user_show', {'id': user.id}) }}"><img class="btnListe" src="../Image/oeil.png"></a>
+				<a class="btn-link" href="{{ path('app_super_admin_edit', {'id': user.id}) }}"><img class="btnListe" src="../Image/modif.png"></a>
 
 			</td>
 		</tr>
@@ -48,6 +53,6 @@
 	</tbody>
 </table>
 
-<a class="btn-link" href="{{ path('app_user_new') }}">Création d'un nouvelle utilisateur</a>
+
 
 {% endblock %}

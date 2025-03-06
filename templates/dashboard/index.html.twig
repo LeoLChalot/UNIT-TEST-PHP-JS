@@ -28,7 +28,12 @@
         <div class="user-info">
             <h2>MA FICHE</h2>
             <div class="user-details">
-                <p><strong>Email :</strong> {{ user.getUserIdentifier() }}</p>
+                <p>
+					<strong>Nom :</strong>
+					{{user.getNom()}}</p>
+				<p>
+					<strong>Prenom :</strong>
+					{{user.getPrenom()}}</p>
             </div>
             <br>
             <hr>
@@ -36,22 +41,21 @@
                 <h3>MÉTIER</h3>
                 <br>
                 {% if 'ROLE_SUPER_ADMIN' in user.getRoles() %}
-                    <p class="role red">ADMINISTRATEUR</p>
-                {% elseif 'ROLE_USER' in user.getRoles() %}
-                    <p class="role">Utilisateur</p>
-                {% else %}
-                    <p class="role">Rôle inconnu</p>
-                {% endif %}
+					<p class="role red">SUPER ADMINISTRATEUR</p>
+				{% elseif 'ROLE_ADMIN' in user.getRoles()%}
+					<p class="role red">ADMINISTRATEUR</p>
+				{% elseif 'ROLE_USER' in user.getRoles() %}
+					<p class="role">UTILISATEUR</p>
+				{% else %}
+					<p class="role">Rôle inconnu</p>
+				{% endif %}
             </div>
             <br>
             <hr>
             <div class="user-options">
                 <h3>OPTIONS</h3>
+                <a href="{{ path('app_user_show', {'id': user.id}) }}"class="logout-button">VOIR DETAIL</a>
                 <br><br>
-                <br><br>
-                <br><br>
-                <br><br>
-                <br>
                 <a href="{{ path('app_logout') }}" class="logout-button">SE DÉCONNECTER</a>
             </div>
         </div>

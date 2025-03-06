@@ -41,7 +41,11 @@
                 <td>{{ dureeFormatee }}</td>
             </tr>
             <tr>
-                <th>Date de fin prévue</th>
+                <th>Date de debut</th>
+                <td>{{ tache.dateDeDebut ? tache.dateDeDebut|date('d/m/20y') : 'Non définie' }}</td>
+            </tr>
+            <tr>
+                <th>Date de fin</th>
                 <td>{{ fin_prevue }}</td>
             </tr>
         </tbody>
