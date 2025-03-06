@@ -35,7 +35,6 @@
 				<a href="{{ path('app_dashboard') }}" class="btnHeader">DASHBOARD</a>
 
 				{% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
-					<a href="{{ path('app_register') }}" class="btnHeader">Création d'un Utilisateur</a>
 				{% endif %}
 
 				<a href="{{ path('app_chantier_index') }}" class="btnHeader">Gestion Chantiers</a>

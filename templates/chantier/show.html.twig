@@ -3,6 +3,7 @@
 {% block title %}Chantier{% endblock %}
 
 {% block body %}
+
     <div class="ROW">
         <h1 class="TitlePage">Chantier - {{ chantier.nom }}</h1>
         <a class="BtnEmploye" href="{{ path('app_chantier_index') }}">Retour à la liste</a>
@@ -17,6 +18,14 @@
                 <td>{{ chantier.id }}</td>
             </tr>
             <tr>
+                <th>Nom</th>
+                <td>{{ chantier.nom }}</td>
+            </tr>
+            <tr>
+                <th>Responsable</th>
+                <td>{{ chantier.getChefDeChantier.getNom }}</td>
+            </tr>
+            <tr>
                 <th>Date de début</th>
                 <td>{{ chantier.dateDeDebut ? chantier.dateDeDebut|date('Y-m-d') : '' }}</td>
             </tr>
@@ -24,6 +33,36 @@
                 <th>Date de fin</th>
                 <td>{{ chantier.dateDeFin ? chantier.dateDeFin|date('Y-m-d') : '' }}</td>
             </tr>
+            <tr>
+                <th>Tâches</th>
+                <td>
+                    <ul>
+                        {% for tache in chantier.taches %}
+
+                            <li>
+                                <strong>{{ tache.description }}</strong>  
+                                ({{ tache.statut }})  
+                                <br> ➝ Durée : {{ tache.duree }} jour{% if tache.duree > 1 %}s{% endif %}  
+                                <br> 📅 Début : {{ tache.dateDeDebut ? tache.dateDeDebut|date('Y-m-d') : 'Non défini' }}  
+                                <br> ⏳ Fin : {{ tache.dateDeFin ? tache.dateDeFin|date('Y-m-d') : 'Non défini' }}  
+                            </li>
+                            <hr>
+                        {% else %}
+                            <li><em>Aucune tâche</em></li>
+
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Adresse
+                </th>
+                <td>
+                    <p id="adresse">32 rue des vignes, Cachan</p>
+                </td>
+            </tr>
         </tbody>
     </table>
+    <div id="map" style="height:300px;width:600px;"></div>
 {% endblock %}
