@@ -2,8 +2,13 @@
 
 - [Overview](#overview)
 - [Commande Github](#commande-github)
+- [Mise en place du projet](#mise-en-place-du-projet)
 - [Hackathon](#hackathon)
   - [Présentation de l’entreprise cliente](#présentation-de-lentreprise-cliente)
+
+> [!NOTE] A l'attention du groupe
+> Les commandes suivantes sont données à titre informatif et peuvent ne pas convenir à toutes les situations
+> 
 
 # Commande Github
 ```powershell
@@ -34,6 +39,29 @@ Cliquer sur le lien affiché
 remote:     Create a pull request for 'update_readme' on GitHub by visiting:
 remote:     https://github.com/LeoLChalot/UNIT-TEST-PHP-JS/pull/new/update_readme
 ```
+
+
+# Mise en place du projet
+
+Le fichier `.env.example` sert de base.
+Il faudra penser à adapter la variable d'environnement `DATABASE_URL` avec le nom de la base de données créée ci-dessous
+
+`git clone https://github.com/LeoLChalot/UNIT-TEST-PHP-JS.git`
+
+`cd UNIT-TEST-PHP-JS` 
+
+`composer update`
+
+`npm i`
+
+`php bin/console doctrine:database:create`
+
+`php bin/console make:migration`
+
+`php bin/console doctrine:migrations:migrate`
+
+> [!WARNING]   Nous avons eu quelques soucis de comportement avec Composer
+> En cas de problème, contactez-nous
 
 # Hackathon
 En tant qu'intermédiaire, mon rôle est de mettre en relation des développeurs freelances avec des
