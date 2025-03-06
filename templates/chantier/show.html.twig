@@ -32,13 +32,18 @@
                 <td>
                     <ul>
                         {% for tache in chantier.taches %}
-                        <li>
-                            {{ tache.description }} : {{ tache.duree }}
-                            jour{% if tache.duree > 1 %}s{% endif %}
-                            ({{ tache.statut }})
-                        </li>
+
+                            <li>
+                                <strong>{{ tache.description }}</strong>  
+                                ({{ tache.statut }})  
+                                <br> ➝ Durée : {{ tache.duree }} jour{% if tache.duree > 1 %}s{% endif %}  
+                                <br> 📅 Début : {{ tache.dateDeDebut ? tache.dateDeDebut|date('Y-m-d') : 'Non défini' }}  
+                                <br> ⏳ Fin : {{ tache.dateDeFin ? tache.dateDeFin|date('Y-m-d') : 'Non défini' }}  
+                            </li>
+                            <hr>
                         {% else %}
-                        <li>Aucune tâche</li>
+                            <li><em>Aucune tâche</em></li>
+
                         {% endfor %}
                     </ul>
                 </td>

@@ -37,16 +37,24 @@
                 </td>
                 <td>
                     {% set all_tasks_completed = true %}
+
                     {% for tache in chantier.taches %}
                         {% if tache.statut != 'terminé' %}
                             {% set all_tasks_completed = false %}
                         {% endif %}
                     {% endfor %}
 
-                    {% if all_tasks_completed %}
+                    {% set current_date = "now"|date("Y-m-d") %}
+                    {% set chantier_date_debut = chantier.dateDeDebut|date("Y-m-d") %}
+
+                    {% if all_tasks_completed and chantier.taches is not empty %}
                         <span>Terminé</span>
+                    {% elseif chantier_date_debut == current_date %}
+                        <span>En cours</span>
+                    {% elseif chantier_date_debut > current_date %}
+                        <span>À venir</span>
                     {% else %}
-                        <span>En cours</span> 
+                        <span>En cours</span>
                     {% endif %}
                 </td>
                 <td>
