@@ -25,6 +25,9 @@ class UserFormType extends AbstractType
                     'User' => 'ROLE_USER',
                 ],
                 'multiple' => true, // Autorise plusieurs rôles
+                'attr' => [' 
+                    class' => 'selectMult 
+                ']
             ])
             ->add('plainPassword', PasswordType::class, [
                 'mapped' => false,

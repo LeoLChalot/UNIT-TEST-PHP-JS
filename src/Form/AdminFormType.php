@@ -27,6 +27,9 @@ class AdminFormType extends AbstractType
                     'User' => 'ROLE_USER',
                 ],
                 'multiple' => true, // Autorise plusieurs rôles
+                'attr' => [' 
+                    class' => 'selectMult 
+                ']
             ]);
     }
 
