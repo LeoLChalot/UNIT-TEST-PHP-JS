@@ -31,6 +31,9 @@ class Employe
     #[ORM\JoinColumn(nullable: false)]
     private ?Metier $metier = null;
 
+    #[ORM\OneToOne(mappedBy: 'chef_de_chantier', targetEntity: Chantier::class)]
+    private ?Chantier $chantierDirige = null;
+
     /**
      * @var Collection<int, Tache>
      */
