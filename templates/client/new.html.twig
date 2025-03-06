@@ -3,9 +3,15 @@
 {% block title %}New Client{% endblock %}
 
 {% block body %}
-    <h1>Create new Client</h1>
+    <div class="ROW">
+        <h1 class="TitlePage">Ajouter un client</h1>
+        <a class="BtnEmploye" href="{{ path('app_client_index') }}">Retour à la liste des clients</a>
+    </div>
 
-    {{ include('client/_form.html.twig') }}
+    <div class="FormNewEmploye">
+        {{ include('client/_form.html.twig') }}
+    </div>
 
-    <a href="{{ path('app_client_index') }}">back to list</a>
+
+
 {% endblock %}

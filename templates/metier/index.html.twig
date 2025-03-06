@@ -3,7 +3,12 @@
 {% block title %}Metier index{% endblock %}
 
 {% block body %}
-    <h1>Liste des métiers référencés</h1>
+
+    <div class="ROW">
+        <h1 class="TitlePage">Liste des métiers référencés</h1>
+        <a class="BtnEmploye" href="{{ path('app_metier_new') }}">+ Créer une fiche métier</a>
+    </div>
+
 
     <table class="table">
         <thead>
@@ -19,8 +24,12 @@
                 <td>{{ metier.id }}</td>
                 <td>{{ metier.label }}</td>
                 <td>
-                    <a class="btn-preview" href="{{ path('app_metier_show', {'id': metier.id}) }}">voir</a>
-                    <a class="btn-edit" href="{{ path('app_metier_edit', {'id': metier.id}) }}">éditer</a>
+                    <div class="ROW">
+                        <a class="btn-preview" href="{{ path('app_metier_show', {'id': metier.id}) }}"><img class="btnListe" src="../Image/oeil.png"></a>
+                        <a class="btn-edit" href="{{ path('app_metier_edit', {'id': metier.id}) }}"><img class="btnListe" src="../Image/modif.png"></a>
+                        {{ include('metier/_delete_form.html.twig') }}
+                    </div>
+
                 </td>
             </tr>
         {% else %}
@@ -31,5 +40,5 @@
         </tbody>
     </table>
 
-    <a class="btn-link" href="{{ path('app_metier_new') }}">Créer une fiche métier</a>
+
 {% endblock %}

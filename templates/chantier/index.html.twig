@@ -17,8 +17,7 @@
                 <th>Responsable</th>
                 <th>Date de début</th>
                 <th>Date de fin</th>
-                <th>Adresse</th>
-                <th>Status</th>
+                <th>Tâches</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -32,34 +31,19 @@
                 <td>{{ chantier.dateDeFin ? chantier.dateDeFin|date('Y-m-d') : '' }}</td>
                 <td>
                     <ul>
-                        {{ chantier.getNumeroDeLaVoie }} {{ chantier.getTypeDeVoie }} {{ chantier.getLibelleDeLaVoie }} {{ chantier.getCodePostal }} {{ chantier.getVille }}
+                        {% for tache in chantier.taches %}
+                            <li>{{ tache.description }} : {{ tache.duree }} jour</li>
+                        {% else %}
+                            <li>Aucune tâche</li>
+                        {% endfor %}
                     </ul>
                 </td>
                 <td>
-                    {% set all_tasks_completed = true %}
-
-                    {% for tache in chantier.taches %}
-                        {% if tache.statut != 'terminé' %}
-                            {% set all_tasks_completed = false %}
-                        {% endif %}
-                    {% endfor %}
-
-                    {% set current_date = "now"|date("Y-m-d") %}
-                    {% set chantier_date_debut = chantier.dateDeDebut|date("Y-m-d") %}
-
-                    {% if all_tasks_completed and chantier.taches is not empty %}
-                        <span>Terminé</span>
-                    {% elseif chantier_date_debut == current_date %}
-                        <span>En cours</span>
-                    {% elseif chantier_date_debut > current_date %}
-                        <span>À venir</span>
-                    {% else %}
-                        <span>En cours</span>
-                    {% endif %}
-                </td>
-                <td>
-                    <a class="btn-preview" href="{{ path('app_chantier_show', {'id': chantier.id}) }}">Voir</a>
-                    <a class="btn-edit" href="{{ path('app_chantier_edit', {'id': chantier.id}) }}">Modifier</a>
+                    <div class="ROW">
+                        <a class="btn-preview" href="{{ path('app_chantier_show', {'id': chantier.id}) }}"><img class="btnListe" src="../Image/oeil.png"></a>
+                        <a class="btn-edit" href="{{ path('app_chantier_edit', {'id': chantier.id}) }}"><img class="btnListe" src="../Image/modif.png"></a>
+                        {{ include('chantier/_delete_form.html.twig') }}
+                    </div>
                 </td>
             </tr>
         {% else %}
@@ -67,8 +51,6 @@
                 <td colspan="6">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
-
-        
         </tbody>
     </table>
 
