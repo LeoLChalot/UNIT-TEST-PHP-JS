@@ -1,3 +1,7 @@
+*{
+    font-family: 'avenir', sans-serif!important;
+}
+
 .GridLogin {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -6,7 +10,7 @@
 
 .TitleIndex {
     margin-top: 5vh;
-    font-family: Avenir;
+
     font-weight: lighter;
     color: #23362F;
     font-size: 1.2rem;
@@ -16,14 +20,14 @@
     margin-top: 5vh;
     color: #23362F;
     font-size: 2.5rem;
-    font-family: Avenir;
+
     font-weight: lighter;
 }
 
 .FormLogin label {
     margin-left: 5vw;
     margin-top: 5vh;
-    font-family: Avenir;
+
     font-weight: lighter;
     font-size: 1.1rem;
 }
