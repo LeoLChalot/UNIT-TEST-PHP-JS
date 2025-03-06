@@ -3,11 +3,12 @@
     padding: 0;
     text-decoration: none;
     list-style-type: none;
+    font-family: 'avenir', sans-serif!important;
 }
 
 .TitlePage {
     color: #23362F;
-    font-family: Avenir;
+
     font-weight: bold;
 }
 
@@ -23,7 +24,7 @@
 /* HEADER */
 
 header {
-    font-family: Avenir;
+    background-color: white;
 }
 
 
