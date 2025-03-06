@@ -1,3 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style-type: none;
+}
+
 .TitlePage {
     color: #23362F;
     font-family: Avenir;
@@ -12,3 +19,54 @@
     display: flex;
     flex-direction: row;
 }
+
+/* HEADER */
+
+header {
+    font-family: Avenir;
+}
+
+
+
+.btnHeader, .btnCentralHeader {
+    margin-left: 1vw;
+    text-decoration: none;
+    color: #23362F;
+}
+
+.btnCentralHeader {
+    font-weight: bold;
+    padding: 1vh 5vw 1vh 5vw;
+    color: white;
+    background-color: #23362F;
+    border-radius: 15px;
+}
+
+.btnCentralHeaderLogout {
+    font-weight: bold;
+    padding: 1vh 5vw 1vh 5vw;
+    color: white;
+    background-color: #B0413E;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.TITRE {
+    margin-right: 7vw;
+}
+
+.btnListe {
+    width: 2vw;
+}
+
+.btnSupprimer {
+    border: none;
+    background-color: white;
+}
+
+.btnListeModifView {
+    margin-top: 1vh;
+    margin-left: 2vw;
+}
+
+

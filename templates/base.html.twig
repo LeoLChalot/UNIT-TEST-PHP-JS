@@ -36,19 +36,21 @@
 			{% block titleH1 %}
 			<h1 class="text-center"></h1>
 			{% endblock %}
-
+			<!-- <h1 class="TitleIndex">BTP CONSTRUCT</h1> -->
 			<nav class="d-flex justify-content-between align-items-center mt-3">
+				<a href="{{ path('app_dashboard') }}" class="btnHeader">DASHBOARD</a>
+
 				{% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
 				<a href="{{ path('app_user_index') }}" class="btn btn-outline-light">Gestion des utilisateurs</a>
 				{% endif %}
-				<a href="{{ path('app_dashboard') }}" class="btn btn-outline-light">Dashboard</a>
-				<a href="{{ path('app_metier_index') }}" class="btn btn-outline-light">Gestion Métiers</a>
-				<a href="{{ path('app_client_index') }}" class="btn btn-outline-light">Gestion Client</a>
-				<a href="{{ path('app_tache_index') }}" class="btn btn-outline-light">Gestion Tâche</a>
-				<a href="{{ path('app_chantier_index') }}" class="btn btn-outline-light">Gestion Chantier</a>
-				<a href="{{ path('app_employe_index') }}" class="btn btn-outline-light">Gestion Employé</a>
-				<a href="{{ path('app_dashboard') }}" class="btn btn-outline-light">Dashboard</a>
-				<a href="{{ path('app_logout') }}" class="btn btn-danger ms-auto">Déconnexion</a>
+
+				<a href="{{ path('app_chantier_index') }}" class="btnHeader">Gestion Chantiers</a>
+				<a href="{{ path('app_metier_index') }}" class="btnHeader">Gestion Métiers</a>
+				<a href="{{ path('app_client_index') }}" class="btnHeader">Gestion Clients</a>
+				<a href="{{ path('app_tache_index') }}" class="btnHeader">Gestion Tâches</a>
+				<a href="{{ path('app_employe_index') }}" class="btnHeader">Gestion Employés</a>
+
+				<a href="{{ path('app_logout') }}" class="btnCentralHeaderLogout ms-auto">Se déconnecter</a>
 			</nav>
 		</div>
 	</header>

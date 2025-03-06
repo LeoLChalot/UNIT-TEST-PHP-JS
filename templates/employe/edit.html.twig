@@ -3,11 +3,14 @@
 {% block title %}Modifier Employé{% endblock %}
 
 {% block body %}
-    <h1>Modifier l'employé</h1>
+    <div class="ROW">
+        <h1 class="TitlePage">Modifier l'employé</h1>
+        <a class="BtnEmploye" href="{{ path('app_employe_index') }}">Retour à la liste des employés</a>
+    </div>
 
-    {{ include('employe/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    <div class="FormNewEmploye">
+        {{ include('employe/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    </div>
 
-    <a href="{{ path('app_employe_index') }}">Retour à la liste</a>
 
-    {{ include('employe/_delete_form.html.twig') }}
 {% endblock %}

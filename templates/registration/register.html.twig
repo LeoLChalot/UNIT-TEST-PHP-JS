@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Register
+{% endblock %}
+
+{% block body %}
+	<h1 class="TitlePage">Ajout d'un administrateur</h1>
+
+	<div class="FormNewEmploye">
+		{{ form_errors(registrationForm) }}
+
+		{{ form_start(registrationForm) }}
+		{{ form_row(registrationForm.email, {
+			label: "Saisir le mail de l'administrateur :"
+		}) }}
+		{{ form_row(registrationForm.roles, {
+			label: ""
+		})}}
+		{{ form_row(registrationForm.plainPassword, {
+			label: "Saisir le mot de passe de l'administrateur :"
+		}) }}
+
+		<button type="submit" class="btn">Ajouter l'administrateur</button>
+		{{ form_end(registrationForm) }}
+	</div>
+
+{% endblock %}

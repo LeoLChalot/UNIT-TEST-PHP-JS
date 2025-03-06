@@ -31,8 +31,11 @@
                 <td>{{ employe.getMetier.getLabel }}</td>
                 <td>{{ employe.estChefDeChantier ? 'Oui' : 'Non' }}</td>
                 <td>
-                    <a class="btn-preview" href="{{ path('app_employe_show', {'id': employe.id}) }}" class="btn btn-info btn-sm">montrer</a>
-                    <a class="btn-edit" href="{{ path('app_employe_edit', {'id': employe.id}) }}" class="btn btn-info btn-sm">modifier</a>
+                    <div class="ROW">
+                        <a class="btn-preview" href="{{ path('app_employe_show', {'id': employe.id}) }}" class="btn btn-info btn-sm"><img class="btnListe" src="../Image/oeil.png"></a>
+                        <a class="btn-edit" href="{{ path('app_employe_edit', {'id': employe.id}) }}" class="btn btn-info btn-sm"><img class="btnListe" src="../Image/modif.png"></a>
+                        {{ include('employe/_delete_form.html.twig') }}
+                    </div>
                 </td>
             </tr>
         {% else %}

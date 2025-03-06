@@ -3,21 +3,18 @@
 {% block title %}Chantier{% endblock %}
 
 {% block body %}
-<h1>Chantier</h1>
-<div style="display: flex">
+    <div class="ROW">
+        <h1 class="TitlePage">Chantier - {{ chantier.nom }}</h1>
+        <a class="BtnEmploye" href="{{ path('app_chantier_index') }}">Retour à la liste</a>
+        <a href="{{ path('app_chantier_edit', {'id': chantier.id}) }}"><img class="btnListe btnListeModifView" src="../../Image/modif.png"></a>
+    </div>
+
+
     <table class="table">
         <tbody>
             <tr>
                 <th>ID</th>
                 <td>{{ chantier.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ chantier.nom }}</td>
-            </tr>
-            <tr>
-                <th>Responsable</th>
-                <td>{{ chantier.getChefDeChantier.getNom }}</td>
             </tr>
             <tr>
                 <th>Date de début</th>
@@ -27,47 +24,6 @@
                 <th>Date de fin</th>
                 <td>{{ chantier.dateDeFin ? chantier.dateDeFin|date('Y-m-d') : '' }}</td>
             </tr>
-            <tr>
-                <th>Tâches</th>
-                <td>
-                    <ul>
-                        {% for tache in chantier.taches %}
-
-                            <li>
-                                <strong>{{ tache.description }}</strong>  
-                                ({{ tache.statut }})  
-                                <br> ➝ Durée : {{ tache.duree }} jour{% if tache.duree > 1 %}s{% endif %}  
-                                <br> 📅 Début : {{ tache.dateDeDebut ? tache.dateDeDebut|date('Y-m-d') : 'Non défini' }}  
-                                <br> ⏳ Fin : {{ tache.dateDeFin ? tache.dateDeFin|date('Y-m-d') : 'Non défini' }}  
-                            </li>
-                            <hr>
-                        {% else %}
-                            <li><em>Aucune tâche</em></li>
-
-                        {% endfor %}
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <th>
-                    Adresse
-                </th>
-                <td>
-                    <p id="adresse">32 rue des vignes, Cachan</p>
-                </td>
-            </tr>
         </tbody>
     </table>
-
-    <div id="map" style="height:300px;width:600px;"></div>
-</div>
-
-
-<a href="{{ path('app_chantier_index') }}">Retour à la liste</a>
-
-<a href="{{ path('app_chantier_edit', {'id': chantier.id}) }}">Modifier</a>
-
-{{ include('chantier/_delete_form.html.twig') }}
-
-
 {% endblock %}

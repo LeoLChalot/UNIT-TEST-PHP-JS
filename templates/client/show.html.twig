@@ -3,7 +3,12 @@
 {% block title %}Client{% endblock %}
 
 {% block body %}
-    <h1>Client</h1>
+    <div class="ROW">
+        <h1 class="TitlePage">Client - {{ client.nom }}</h1>
+        <a class="BtnEmploye" href="{{ path('app_client_index') }}">Retour à la liste des clients</a>
+        <a class="btn-link" href="{{ path('app_client_edit', {'id': client.id}) }}"><img class="btnListeModifView btnListe" src="../../Image/modif.png"></a>
+    </div>
+
 
     <table class="table">
         <tbody>
@@ -22,6 +27,5 @@
         </tbody>
     </table>
 
-    <a class="btn-link" href="{{ path('app_client_index') }}">Retour à l'index</a>
-    <a class="btn-link" href="{{ path('app_client_edit', {'id': client.id}) }}">Edition</a>
+
 {% endblock %}

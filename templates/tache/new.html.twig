@@ -3,9 +3,23 @@
 {% block title %}New Tache{% endblock %}
 
 {% block body %}
-<h1>Ajouter une tâche</h1>
+    <div class="ROW">
+        <h1 class="TitlePage">Ajouter une tâche</h1>
+        <a class="BtnEmploye" href="{{ path('app_tache_index') }}">Retour à la liste des tâches</a>
+    </div>
 
-{{ include('tache/_form.html.twig') }}
 
-<a class="btn-link" href="{{ path('app_tache_index') }}">Retour à l'index</a>
+{% for flashMessage in app.flashes('warning') %}
+
+    <div class="alert alert-warning" role="alert">
+        {{ flashMessage }}
+    </div>
+{% endfor %}
+
+    <div class="FormNewEmploye">
+        {{ include('tache/_form.html.twig') }}
+    </div>
+
+
+
 {% endblock %}
