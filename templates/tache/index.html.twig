@@ -20,6 +20,8 @@
             <th>Statut</th>
             <th>Chantier</th>
             <th>Ouvrier(s)</th>
+            <th>Date de debut</th>
+            <th>Date de fin</th>
             <th>actions</th>
         </tr>
     </thead>
@@ -33,6 +35,12 @@
                 {% for employe in tache.getEmployes %}
                 {{ employe.getNom() }}{% if not loop.last %}, {% endif %}
                 {% endfor %}
+            </td>
+            <td>
+                {{ tache.dateDeDebut ? tache.dateDeDebut|date('d/m/y') : 'Non définie' }}
+            </td>
+            <td>
+                {{ tache.dateDeFin ? tache.dateDeFin|date('d/m/y') : 'Non définie' }}
             </td>
             <td>
                 <div class="ROW">

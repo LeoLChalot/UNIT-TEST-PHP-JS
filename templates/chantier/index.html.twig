@@ -27,8 +27,8 @@
                 <td>{{ chantier.id }}</td>
                 <td>{{ chantier.nom }}</td>
                 <td>{{ chantier.getChefDeChantier.getNom }}</td>
-                <td>{{ chantier.dateDeDebut ? chantier.dateDeDebut|date('Y-m-d') : '' }}</td>
-                <td>{{ chantier.dateDeFin ? chantier.dateDeFin|date('Y-m-d') : '' }}</td>
+                <td>{{ chantier.dateDeDebut ? chantier.dateDeDebut|date('d/m/Y') : '' }}</td>
+                <td>{{ chantier.dateDeFin ? chantier.dateDeFin|date('d/m/Y') : '' }}</td>
                 <td>{{ chantier.numeroDeLaVoie }} {{ chantier.typeDeVoie }} {{ chantier.libelleDeLaVoie }}, {{ chantier.ville }}, {{ chantier.ville }}</td>
                 <td>
                     <div class="ROW">
