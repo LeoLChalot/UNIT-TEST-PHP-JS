@@ -31,17 +31,21 @@
 
 <body>
 	{% if app.user is not null %}
-	<header class="p-4 text-white">
+
+	<header class="p-4">
+
 		<div class="container">
 			{% block titleH1 %}
 			<h1 class="text-center"></h1>
 			{% endblock %}
 			<!-- <h1 class="TitleIndex">BTP CONSTRUCT</h1> -->
+
 			<nav class="d-flex justify-content-between align-items-center mt-3 navBase">
+
 
 				<a href="{{ path('app_dashboard') }}" class="btnHeader TITRE">BTP CONSTRUCT</a>
 				{% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
-
+					<a href="{{ path('app_user_index') }}" class="btnHeader">Gestion Utilisateur</a>
 				{% endif %}
 
 				<a href="{{ path('app_chantier_index') }}" class="btnHeader">Chantiers</a>
