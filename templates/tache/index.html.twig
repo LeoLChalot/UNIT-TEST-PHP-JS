@@ -12,7 +12,8 @@
             <th>Chantier</th>
             <th>Ouvrier(s)</th>
             <th>Durée</th>
-            <th>Date de fin prévue</th>
+            <th>Date de debut</th>
+            <th>Date de fin</th>
             <th>actions</th>
         </tr>
     </thead>
@@ -31,7 +32,10 @@
                 {{ tache.duree }} jour{% if tache.duree > 1 %}s{% endif %}
             </td>
             <td>
-                {{ tache.dateDeFin ? tache.dateDeFin|date('Y-m-d') : 'Non définie' }}
+                {{ tache.dateDeDebut ? tache.dateDeDebut|date('d-m-y') : 'Non définie' }}
+            </td>
+            <td>
+                {{ tache.dateDeFin ? tache.dateDeFin|date('d-m-y') : 'Non définie' }}
             </td>
             <td>
                 <a class="btn-preview" href="{{ path('app_tache_show', {'id': tache.id}) }}">voir</a>
