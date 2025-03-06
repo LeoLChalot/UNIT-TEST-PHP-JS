@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Chantier;
 use App\Entity\Client;
 use App\Entity\Employe;
 use App\Entity\Metier;
@@ -154,6 +155,41 @@ class AppFixtures extends Fixture
 
         $manager->flush();
 
+
+        // ********************************************** //
+        // *********** Création des chantiers *********** //
+        // ********************************************** //
+        $chantier1 = new Chantier();
+        $chantier1->setNom('Rénovation Maison');
+        $chantier1->setNumeroDeLaVoie('123');
+        $chantier1->setTypeDeVoie('Rue');
+        $chantier1->setLibelleDeLaVoie('de la Paix');
+        $chantier1->setCodePostal('75000');
+        $chantier1->setVille('Paris');
+        $chantier1->setDateDeDebut(new \DateTime('2025-03-01'));
+        $chantier1->setDateDeFin(new \DateTime('2025-03-05'));
+        $chantier1->setDateTacheSuivante($chantier1->getDateDeDebut());
+        $chantier1->setClient($client1);
+        $chantier1->setChefDeChantier($employe1);
+        $manager->persist($chantier1);
+
+        $chantier2 = new Chantier();
+        $chantier2->setNom('Construction Immeuble');
+        $chantier2->setNumeroDeLaVoie('456');
+        $chantier2->setTypeDeVoie('Avenue');
+        $chantier2->setLibelleDeLaVoie('de la République');
+        $chantier2->setCodePostal('69000');
+        $chantier2->setVille('Lyon');
+        $chantier2->setDateDeDebut(new \DateTime('2025-03-06'));
+        $chantier2->setDateDeFin(new \DateTime('2025-03-10'));
+        $chantier2->setDateTacheSuivante($chantier2->getDateDeDebut());
+        $chantier2->setClient($client2);
+        $chantier2->setChefDeChantier($employe6);
+        $manager->persist($chantier2);
+
+
+
+        $manager->flush();
         
 
     }
