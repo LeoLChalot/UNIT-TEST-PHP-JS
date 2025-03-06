@@ -4,18 +4,30 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Créer un nouvel utilisateur</h1>
+
+	<div class="ROW">
+		<h1 class="TitlePage">Créer un nouvel utilisateur</h1>
+		<a href="{{ path('app_user_index') }}" class="BtnEmploye">Retour à la liste</a>
+	</div>
 
 	{{ form_start(form) }}
-	{{ form_row(form.nom) }}
-	{{ form_row(form.prenom) }}
-	{{ form_row(form.telephone) }}
-	{{ form_row(form.email) }}
-	{{ form_row(form.plainPassword, {'label': 'Mot de passe'}) }}
-	{{ form_row(form.roles) }}
 
-	<button class="btn btn-success">Créer</button>  
+	<div class="FormNewEmploye gridCol2">
+		<div>
+			{{ form_row(form.nom) }}
+			{{ form_row(form.prenom) }}
+			{{ form_row(form.telephone) }}
+		</div>
+		<div>
+			{{ form_row(form.email) }}
+			{{ form_row(form.plainPassword, {'label': 'Mot de passe :'}) }}
+			{{ form_row(form.roles, {'label': 'Rôles :'}) }}
+
+
+		</div>
+		<button class="BtnSubmit">Créer l'utilisateur</button>
+	</div>
+
+
 	{{ form_end(form) }}
-
-	<a href="{{ path('app_user_index') }}" class="btn btn-link">Retour à la liste</a>
 {% endblock %}

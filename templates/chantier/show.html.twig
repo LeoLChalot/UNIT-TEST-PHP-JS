@@ -34,27 +34,6 @@
                 <td>{{ chantier.dateDeFin ? chantier.dateDeFin|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>Tâches</th>
-                <td>
-                    <ul>
-                        {% for tache in chantier.taches %}
-
-                            <li>
-                                <strong>{{ tache.description }}</strong>  
-                                ({{ tache.statut }})  
-                                <br> ➝ Durée : {{ tache.duree }} jour{% if tache.duree > 1 %}s{% endif %}  
-                                <br> 📅 Début : {{ tache.dateDeDebut ? tache.dateDeDebut|date('Y-m-d') : 'Non défini' }}  
-                                <br> ⏳ Fin : {{ tache.dateDeFin ? tache.dateDeFin|date('Y-m-d') : 'Non défini' }}  
-                            </li>
-                            <hr>
-                        {% else %}
-                            <li><em>Aucune tâche</em></li>
-
-                        {% endfor %}
-                    </ul>
-                </td>
-            </tr>
-            <tr>
                 <th>
                     Adresse
                 </th>
@@ -64,5 +43,26 @@
             </tr>
         </tbody>
     </table>
-    <div id="map" style="height:300px;width:600px;"></div>
+
+    <h2 class="TitlePage">Tâches du chantier :</h2>
+    <div class="gridCol2">
+        <ul class="listeTache">
+            {% for tache in chantier.taches %}
+
+                <li>
+                    <strong>{{ tache.description }}</strong>
+                    ({{ tache.statut }})
+                    <br> ➝ Durée : {{ tache.duree }} jour{% if tache.duree > 1 %}s{% endif %}
+                    <br> 📅 Début : {{ tache.dateDeDebut ? tache.dateDeDebut|date('Y-m-d') : 'Non défini' }}
+                    <br> ⏳ Fin : {{ tache.dateDeFin ? tache.dateDeFin|date('Y-m-d') : 'Non défini' }}
+                </li>
+                <hr>
+            {% else %}
+                <li><em>Aucune tâche</em></li>
+
+            {% endfor %}
+        </ul>
+        <div id="map" style="height:300px;width:600px;"></div>
+    </div>
+
 {% endblock %}

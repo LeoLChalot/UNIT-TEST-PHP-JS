@@ -21,14 +21,14 @@ class ChantierType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
-                'label' => 'Nom du chantier',
+                'label' => 'Nom du chantier :',
                 'attr' => [
                     'placeholder' => 'Nom du chantier',
                     'class' => 'aaaaaa'
                 ]
             ])
             ->add('numero_de_la_voie', TextType::class, [
-                'label' => 'Numéro de la voie',
+                'label' => 'Numéro de la voie :',
                 'attr' => [
                     'placeholder' => 'Numéro de la voie',
                     'class' => 'aaaaaa'
@@ -36,7 +36,7 @@ class ChantierType extends AbstractType
             ])
             ->add('type_de_voie', ChoiceType::class,
                 [
-                    'label' => 'Type de voie',
+                    'label' => 'Type de voie :',
                     'choices' => [
                         'Rue' => 'Rue',
                         'Avenue' => 'Avenue',
@@ -60,33 +60,36 @@ class ChantierType extends AbstractType
 
             )
             ->add('libelle_de_la_voie', TextType::class, [
-                'label' => 'Libellé de la voie',
+                'label' => 'Libellé de la voie :',
                 'attr' => [
                     'placeholder' => 'Libellé de la voie',
                     'class' => 'aaaaaa'
                 ]
             ])
             ->add('code_postal', NumberType::class, [
-                'label' => 'Code postal',
+                'label' => 'Code postal :',
                 'attr' => [
                     'placeholder' => 'Code postal',
                     'class' => 'aaaaaa'
                 ]
             ])
             ->add('ville', TextType::class, [
-                'label' => 'Ville',
+                'label' => 'Ville :',
                 'attr' => [
                     'placeholder' => 'Ville',
                     'class' => 'aaaaaa'
                 ]
             ])
             ->add('date_de_debut', null, [
+                'label' => 'Date de début :',
                 'widget' => 'single_text',
             ])
             ->add('date_de_fin', null, [
+                'label' => 'Date de fin :',
                 'widget' => 'single_text',
             ])
             ->add('chef_de_chantier', EntityType::class, [
+                'label' => 'Chef de chantier :',
                 'class' => Employe::class,
                 'choice_label' => 'nom',
                 'query_builder' => function (EmployeRepository $er) {
@@ -99,6 +102,7 @@ class ChantierType extends AbstractType
                 ]
             ])
             ->add('client', EntityType::class, [
+                'label' => 'Client :',
                 'class' => Client::class,
                 'choice_label' => 'nom',
             ])

@@ -17,16 +17,20 @@ class AdminFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom', TextType::class)
-            ->add('prenom', TextType::class)
-            ->add('telephone', TelType::class)
-            ->add('email', EmailType::class)
+            ->add('nom', TextType::class, ['label' => 'Nom :'])
+            ->add('prenom', TextType::class, ['label' => 'Prénom :'])
+            ->add('telephone', TelType::class, ['label' => 'Téléphone :'])
+            ->add('email', EmailType::class, ['label' => 'Email :'])
             ->add('roles', ChoiceType::class, [
                 'choices' => [
                     'Admin' => 'ROLE_ADMIN',
                     'User' => 'ROLE_USER',
                 ],
+                'label' => 'Rôles :',
                 'multiple' => true, // Autorise plusieurs rôles
+                'attr' => [' 
+                    class' => 'selectMult 
+                ']
             ]);
     }
 

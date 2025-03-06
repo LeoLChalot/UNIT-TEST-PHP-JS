@@ -16,15 +16,17 @@ class EmployeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom')
-            ->add('prenom')
-            ->add('telephone')
-            ->add('est_chef_de_chantier')
+            ->add('nom', null, ['label' => 'Nom :'])
+            ->add('prenom' , null, ['label' => 'Prénom :'])
+            ->add('telephone' , null, ['label' => 'Téléphone :'])
+            ->add('est_chef_de_chantier' , null, ['label' => 'Chef de chantier ?'])
             ->add('metier', EntityType::class, [
+                'label' => 'Métier :',
                 'class' => Metier::class,
                 'choice_label' => 'label',
             ])
             ->add('disponible', ChoiceType::class, [
+                'label' => 'Disponible :',
                 'choices' => [
                     'Oui' => true,
                     'Non' => false,
