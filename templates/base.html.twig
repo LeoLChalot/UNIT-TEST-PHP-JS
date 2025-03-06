@@ -31,25 +31,26 @@
 
 <body>
 	{% if app.user is not null %}
-	<header class="p-4 bg-secondary text-white">
+	<header class="p-4 text-white">
 		<div class="container">
 			{% block titleH1 %}
 			<h1 class="text-center"></h1>
 			{% endblock %}
 			<!-- <h1 class="TitleIndex">BTP CONSTRUCT</h1> -->
-			<nav class="d-flex justify-content-between align-items-center mt-3">
-				<a href="{{ path('app_dashboard') }}" class="btnHeader">DASHBOARD</a>
+			<nav class="d-flex justify-content-between align-items-center mt-3 navBase">
 
+				<a href="{{ path('app_dashboard') }}" class="btnHeader TITRE">BTP CONSTRUCT</a>
 				{% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
 
 				{% endif %}
 
-				<a href="{{ path('app_chantier_index') }}" class="btnHeader">Gestion Chantiers</a>
-				<a href="{{ path('app_metier_index') }}" class="btnHeader">Gestion Métiers</a>
-				<a href="{{ path('app_client_index') }}" class="btnHeader">Gestion Clients</a>
-				<a href="{{ path('app_tache_index') }}" class="btnHeader">Gestion Tâches</a>
-				<a href="{{ path('app_employe_index') }}" class="btnHeader">Gestion Employés</a>
+				<a href="{{ path('app_chantier_index') }}" class="btnHeader">Chantiers</a>
+				<a href="{{ path('app_metier_index') }}" class="btnHeader">Métiers</a>
+				<a href="{{ path('app_client_index') }}" class="btnHeader">Clients</a>
+				<a href="{{ path('app_tache_index') }}" class="btnHeader">Tâches</a>
+				<a href="{{ path('app_employe_index') }}" class="btnHeader">Employés</a>
 
+				<a href="{{ path('app_dashboard') }}" class="btnCentralHeaderDash">DASHBOARD</a>
 				<a href="{{ path('app_logout') }}" class="btnCentralHeaderLogout ms-auto">Se déconnecter</a>
 			</nav>
 		</div>
