@@ -31,6 +31,9 @@ final class ChantierController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($chantier);
+
+
+
             $chantier->setDateTacheSuivante($chantier->getDateDeDebut());
             $entityManager->flush();
 

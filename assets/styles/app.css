@@ -4,9 +4,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Roboto';
 }
 
-body {
-    background-color: rgba(255, 255, 255, 0.96);
-    font-family: 'Arial', sans-serif;
-}

@@ -1,3 +1,7 @@
+*{
+    font-family: 'Roboto', sans-serif!important;
+}
+
 .dashboardContainer {
     height: 80vh;
     width: 100%;
@@ -16,7 +20,7 @@
     margin: 10%;
     padding: 5%;
     border: 2px solid #23362F;
-    font-family: Avenir;
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     color: #23362F;
 }
@@ -44,7 +48,7 @@
     margin-top: 2vh;
     text-align: center;
     font-weight: bold;
-    font-family: Avenir;
+
 }
 
 .user-details {
@@ -54,7 +58,7 @@
 
 .role {
     text-align: center;
-    font-family: Avenir;
+
     font-size: 1.1rem;
 }
 
@@ -65,7 +69,7 @@
 .user-options a {
     margin-left: 1vw;
     padding: 1vh 2vw 1vh 2vw;
-    font-family: Avenir;
+
     color: white;
     background-color: #B0413E;
     text-decoration: none;

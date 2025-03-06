@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
-class RegistrationFormType extends AbstractType
+class UserFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

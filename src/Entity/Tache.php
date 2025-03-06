@@ -22,14 +22,14 @@ class Tache
     #[ORM\Column(length: 255)]
     private ?string $statut = null;
 
-    #[ORM\ManyToOne(inversedBy: 'taches')]
+    #[ORM\ManyToOne(inversedBy: 'taches', targetEntity: Chantier::class)]
     #[ORM\JoinColumn(nullable: false)]
     private ?Chantier $chantier = null;
 
     /**
      * @var Collection<int, Employe>
      */
-    #[ORM\ManyToMany(targetEntity: Employe::class, inversedBy: 'taches')]
+    #[ORM\ManyToMany(inversedBy: 'taches', targetEntity: Employe::class)]
     private Collection $employes;
 
     #[ORM\Column]

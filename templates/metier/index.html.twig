@@ -5,7 +5,7 @@
 {% block body %}
 
     <div class="ROW">
-        <h1 class="TitlePage">Liste des métiers référencés</h1>
+        <h1 class="TitlePage">Liste des métiers</h1>
         <a class="BtnEmploye" href="{{ path('app_metier_new') }}">+ Créer une fiche métier</a>
     </div>
 
@@ -13,9 +13,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Label</th>
-                <th class="action-column">actions</th>
+                <th>ID</th>
+                <th>Nom du métier</th>
+                <th class="action-column">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -34,7 +34,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Il n'y a aucun métiers référencés pour le moment.</td>
             </tr>
         {% endfor %}
         </tbody>

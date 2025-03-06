@@ -1,3 +1,7 @@
+*{
+    font-family: 'Roboto', sans-serif!important;
+}
+
 .BtnEmploye {
     height: 4vh;
     margin-top: 1vh;
@@ -10,7 +14,7 @@
     padding-right: 2vw;
     border-radius: 15px;
     color: white;
-    font-family: Avenir;
+    font-family: 'Roboto';
     text-decoration: none;
     font-weight: bold;
 }
@@ -27,7 +31,7 @@
 .FormNewEmploye label {
     margin-left: 5vw;
     margin-top: 5vh;
-    font-family: Avenir;
+    font-family: 'Roboto';
     font-weight: lighter;
     font-size: 1.1rem;
 }
@@ -65,7 +69,7 @@
     padding-right: 2vw;
     border-radius: 15px;
     color: white;
-    font-family: Avenir;
+    font-family: 'Roboto';
     text-decoration: none;
     font-weight: bold;
     border: none;

@@ -13,7 +13,6 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 		{% block stylesheets %}
-			<link rel="stylesheet" href="{{ asset('assets/styles/leo_custom.css') }}">
 		{% endblock %}
 
 		{% block javascripts %}
@@ -33,10 +32,8 @@
 
 					<nav class="d-flex justify-content-between align-items-center mt-3 navDashboard">
 						<a href="{{ path('app_dashboard') }}" class="btnHeader TITRE">BTP CONSTRUCT</a>
-						<a href="{{ path('app_dashboard') }}" class="btnHeader">DASHBOARD</a>
-
 						{% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
-							<a href="{{ path('app_register') }}" class="btnHeader">Création d'un Utilisateur</a>
+							<a href="{{ path('app_user_index') }}" class="btnHeader">Gestion Utilisateur</a>
 						{% endif %}
 
 						<a href="{{ path('app_metier_index') }}" class="btnHeader">Gestion Métiers</a>
