@@ -16,12 +16,17 @@
 
 	{% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('assets/styles/leo_custom.css') }}">
+	<link href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css" rel="stylesheet">
 	{% endblock %}
 
 	{% block javascripts %}
+
 	{% block importmap %}
 	{{ importmap('app') }}
 	{% endblock %}
+	<script src="//unpkg.com/@sjaakp/leaflet-search/dist/leaflet-search.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
+	<script src="/assets/531cbf94/leaflet-search.js"></script>
 	{% endblock %}
 </head>
 

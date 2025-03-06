@@ -110,6 +110,25 @@ final class TacheController extends AbstractController
         return true;
     }
 
+    /**
+     * Crée une nouvelle assignation pour une tâche donnée à un employé spécifique avec des dates de début et de fin.
+     *
+     * @param Tache $tache L'objet Tache à assigner.
+     * @param Employe $employe L'objet Employe à qui la tâche est assignée.
+     * @param DateTime $date_de_debut La date de début de l'assignation.
+     * @param DateTime $date_de_fin La date de fin de l'assignation.
+     * @return Assignation L'objet Assignation créé.
+     */
+    private function setAssiganationTache(Tache $tache, Employe $employe, DateTime $date_de_debut, DateTime $date_de_fin): Assignation
+    {
+        $assignation = new Assignation();
+        $assignation->setEmploye($employe);
+        $assignation->setTache($tache);
+        $assignation->setDateDeDebut($date_de_debut);
+        $assignation->setDateDeFin($date_de_fin);
+        return $assignation;
+    }
+
     #[Route(name: 'app_tache_index', methods: ['GET'])]
     public function index(TacheRepository $tacheRepository): Response
     {
@@ -126,19 +145,19 @@ final class TacheController extends AbstractController
         $tache = new Tache();
         $form = $this->createForm(TacheType::class, $tache);
         $form->handleRequest($request);
-    
+
         if ($form->isSubmitted() && $form->isValid()) {
             // Récupérer le chantier associé
             $chantier = $tache->getChantier();
-    
+
             // Récupérer les dates de début et de fin de la tâche
             $debut_fin_tache = $this->getDebutFinTache($tache);
             $date_de_debut = $debut_fin_tache['date_de_debut'];
             $date_de_fin = $debut_fin_tache['date_de_fin'];
-    
+
             // Définir les dates de début et de fin de la tâche
             $this->setDateDebutFinTache($tache, $debut_fin_tache);
-    
+
             // Vérifier si la date de fin de la tâche dépasse la date de fin prévue du chantier
             if ($tache->getDateDeFin() > $chantier->getDateDeFin()) {
                 $this->addFlash(
@@ -146,12 +165,12 @@ final class TacheController extends AbstractController
                     'Attention : La date de fin de la tâche dépasse la date de fin prévue du chantier.'
                 );
             }
-    
+
             // Récupérer les employés assignés à la tâche
             $employes = $tache->getEmployes();
             $tousEmployesDisponibles = true;
             $employes_indisponibles = [];
-    
+
             // Vérifier la disponibilité de chaque employé
             foreach ($employes as $employe) {
                 // Vérifier si l'employé est déjà assigné à cette tâche
@@ -159,44 +178,40 @@ final class TacheController extends AbstractController
                     'tache' => $tache,
                     'employe' => $employe,
                 ]);
-    
+
                 if ($assignationExistante) {
                     $tousEmployesDisponibles = false;
                     continue;
                 }
-    
+
                 // Vérifier si l'employé est disponible pour la période
                 if (!$this->estDisponible($employe, $date_de_debut, $date_de_fin)) {
                     $employes_indisponibles[] = $employe->getNom() . ' ' . $employe->getPrenom();
                     $tousEmployesDisponibles = false;
                 }
             }
-    
+
             // Si tous les employés sont disponibles, persister la tâche et les assignations
             if ($tousEmployesDisponibles) {
                 // Persister la tâche
                 $entityManager->persist($tache);
-    
+
                 // Mettre à jour la date de la prochaine tâche du chantier
                 $chantier->setDateTacheSuivante($tache->getDateDeFin());
-    
+
                 // Persister les assignations
                 foreach ($employes as $employe) {
-                    $assignation = new Assignation();
-                    $assignation->setEmploye($employe);
-                    $assignation->setTache($tache);
-                    $assignation->setDateDeDebut($date_de_debut);
-                    $assignation->setDateDeFin($date_de_fin);
+                    $assignation = $this->setAssiganationTache($tache, $employe, $date_de_debut, $date_de_fin);
                     $entityManager->persist($assignation);
                 }
-    
+
                 // Flush pour enregistrer en base de données
                 $entityManager->flush();
-    
+
                 // Formatage de la durée de la tâche
                 $duree_tache = $this->getDureeTache($tache);
                 $dureeFormatee = $duree_tache->format('%d jours et %h heures');
-    
+
                 // Message de succès
                 $this->addFlash(
                     'success',
@@ -208,19 +223,18 @@ final class TacheController extends AbstractController
                         . $dureeFormatee
                         . '.'
                 );
-    
                 return $this->redirectToRoute('app_tache_index', [], Response::HTTP_SEE_OTHER);
             } else {
                 // Si un employé n'est pas disponible, afficher un message d'erreur
                 $errorMessage = 'Les employés suivants ne sont pas disponibles pour la période de la tâche : '
                     . implode(', ', $employes_indisponibles);
                 $this->addFlash('error', $errorMessage);
-    
+
                 // Rediriger vers la page du formulaire pour afficher les messages flash
                 return $this->redirectToRoute('app_tache_new');
             }
         }
-    
+
         // Afficher le formulaire
         return $this->render('tache/new.html.twig', [
             'tache' => $tache,
