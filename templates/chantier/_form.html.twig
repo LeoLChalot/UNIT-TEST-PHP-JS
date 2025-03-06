@@ -1,57 +1,59 @@
 {{ form_start(form) }}
-<div class="left-part">
-    <div class="group1">
-        {{ form_label(form.nom) }}
-        {{ form_widget(form.nom) }}
+<div class="gridCol2">
+    <div class="left-part">
+        <div class="group1">
+            {{ form_label(form.nom) }}
+            {{ form_widget(form.nom) }}
+        </div>
+
+        <div class="group1">
+            {{ form_label(form.date_de_debut) }}
+            {{ form_widget(form.date_de_debut) }}
+        </div>
+
+        <div class="group1">
+            {{ form_label(form.date_de_fin) }}
+            {{ form_widget(form.date_de_fin) }}
+        </div>
+
+        <div class="group1">
+            {{ form_label(form.chef_de_chantier) }}
+            {{ form_widget(form.chef_de_chantier) }}
+        </div>
+
+        <div class="group1">
+            {{ form_label(form.client) }}
+            {{ form_widget(form.client) }}
+        </div>
     </div>
 
-    <div class="group1">
-        {{ form_label(form.date_de_debut) }}
-        {{ form_widget(form.date_de_debut) }}
-    </div>
+    <div class="right-part">
+        <div class="group2">
+            {{ form_label(form.numero_de_la_voie) }}
+            {{ form_widget(form.numero_de_la_voie) }}
+        </div>
 
-    <div class="group1">
-        {{ form_label(form.date_de_fin) }}
-        {{ form_widget(form.date_de_fin) }}
-    </div>
+        <div class="group2">
+            {{ form_label(form.type_de_voie) }}
+            {{ form_widget(form.type_de_voie) }}
+        </div>
 
-    <div class="group1">
-        {{ form_label(form.chef_de_chantier) }}
-        {{ form_widget(form.chef_de_chantier) }}
-    </div>
+        <div class="group2">
+            {{ form_label(form.libelle_de_la_voie) }}
+            {{ form_widget(form.libelle_de_la_voie) }}
+        </div>
 
-    <div class="group1">
-        {{ form_label(form.client) }}
-        {{ form_widget(form.client) }}
+        <div class="group2">
+            {{ form_label(form.code_postal) }}
+            {{ form_widget(form.code_postal) }}
+        </div>
+
+        <div class="group2">
+            {{ form_label(form.ville) }}
+            {{ form_widget(form.ville) }}
+        </div>
     </div>
 </div>
 
-<div class="right-part">
-    <div class="group2">
-        {{ form_label(form.numero_de_la_voie) }}
-        {{ form_widget(form.numero_de_la_voie) }}
-    </div>
-
-    <div class="group2">
-        {{ form_label(form.type_de_voie) }}
-        {{ form_widget(form.type_de_voie) }}
-    </div>
-
-    <div class="group2">
-        {{ form_label(form.libelle_de_la_voie) }}
-        {{ form_widget(form.libelle_de_la_voie) }}
-    </div>
-
-    <div class="group2">
-        {{ form_label(form.code_postal) }}
-        {{ form_widget(form.code_postal) }}
-    </div>
-
-    <div class="group2">
-        {{ form_label(form.ville) }}
-        {{ form_widget(form.ville) }}
-    </div>
-</div>
-
-<button class="btn">{{ button_label|default('Save') }}</button>
+<button class="btn">{{ button_label|default('Créer le Chantier') }}</button>
 {{ form_end(form) }}

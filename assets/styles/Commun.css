@@ -100,3 +100,7 @@ header {
     flex-direction: column;
 }
 
+.listeTache {
+    width: 80%;
+}
+

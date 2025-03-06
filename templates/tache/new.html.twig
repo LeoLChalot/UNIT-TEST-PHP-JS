@@ -15,10 +15,20 @@
         {{ flashMessage }}
     </div>
 {% endfor %}
-
-    <div class="FormNewEmploye">
-        {{ include('tache/_form.html.twig') }}
+    {{ form_start(form) }}
+    <div class="FormNewEmploye gridCol2">
+    <div>
+        {{ form_row(form.description) }}
+        {{ form_row(form.statut) }}
+        {{ form_row(form.duree) }}
     </div>
+    <div>
+        {{ form_row(form.chantier) }}
+        {{ form_row(form.employes) }}
+    </div>
+        <button class="BtnSubmit">{{ button_label|default('Ajouter la tâche') }}</button>
+    </div>
+    {{ form_end(form) }}
 
 
 
