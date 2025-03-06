@@ -2,142 +2,189 @@
 
 namespace App\Tests\Controller;
 
+use App\Entity\Chantier;
+use App\Entity\Employe;
 use App\Entity\Tache;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\EntityRepository;
+use Doctrine\Persistence\ObjectRepository;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-final class TacheControllerTest extends WebTestCase
+class TacheControllerTest extends WebTestCase
 {
     private KernelBrowser $client;
     private EntityManagerInterface $manager;
-    private EntityRepository $tacheRepository;
-    private string $path = '/tache/';
+    private ObjectRepository $tacheRepository;
 
     protected function setUp(): void
     {
         $this->client = static::createClient();
-        $this->manager = static::getContainer()->get('doctrine')->getManager();
-        $this->tacheRepository = $this->manager->getRepository(Tache::class);
-
-        foreach ($this->tacheRepository->findAll() as $object) {
-            $this->manager->remove($object);
+        $this->client->setServerParameters([
+            'HTTP_HOST' => '127.0.0.1:8000',
+        ]);
+        $container = static::getContainer();
+        $this->manager = $container->get('doctrine.orm.entity_manager');
+        $userRepository = $this->manager->getRepository(User::class);
+        foreach ($userRepository->findAll() as $user) {
+            $this->manager->remove($user);
         }
-
         $this->manager->flush();
+        /** @var UserPasswordHasherInterface $passwordHasher */
+        $passwordHasher = $container->get('security.user_password_hasher');
+        $user = (new User())->setEmail('admin@admin.fr');
+        $user->setNom('admin');
+        $user->setPrenom('admin');
+        $user->setTelephone('061234567891');
+        $user->setRoles(['ROLE_ADMIN']);
+        $user->setPassword($passwordHasher->hashPassword($user, 'admin'));
+        $this->manager->persist($user);
+        $this->manager->flush();
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        $this->manager->close();
+    }
+
+    public function testLoginValidCredentials(): void
+    {
+        $this->client->request('GET', '/');
+        self::assertResponseIsSuccessful();
+        $this->client->submitForm('Se connecter', [
+            '_username' => 'admin@admin.fr',
+            '_password' => 'admin',
+        ]);
+        self::assertResponseRedirects('/admin/dashboard'); // Vérifie la redirection vers le tableau de bord
+        $this->client->followRedirect();
+        self::assertResponseIsSuccessful();
     }
 
     public function testIndex(): void
     {
-        $this->client->followRedirects();
-        $crawler = $this->client->request('GET', $this->path);
-
-        self::assertResponseStatusCodeSame(200);
-        self::assertPageTitleContains('Tache index');
-
-        // Use the $crawler to perform additional assertions e.g.
-        // self::assertSame('Some text on the page', $crawler->filter('.p')->first());
+        $this->client->request('GET', '/admin/tache');
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('h1', 'Liste des tâches');
     }
 
     public function testNew(): void
     {
-        $this->markTestIncomplete();
-        $this->client->request('GET', sprintf('%snew', $this->path));
+        // Créez un chantier et un employé pour les tests
+        $chantier = new Chantier();
+        $chantier->setNom('Test Chantier');
+        $this->manager->persist($chantier);
 
-        self::assertResponseStatusCodeSame(200);
+        $employe = new Employe();
+        $employe->setNom('Test');
+        $employe->setPrenom('Employe');
+        $this->manager->persist($employe);
 
-        $this->client->submitForm('Save', [
-            'tache[description]' => 'Testing',
-            'tache[statut]' => 'Testing',
-            'tache[date_de_debut]' => 'Testing',
-            'tache[date_de_fin]' => 'Testing',
-            'tache[chantier]' => 'Testing',
-            'tache[employes]' => 'Testing',
+        $this->manager->flush();
+
+        $crawler = $this->client->request('GET', '/admin/tache/new');
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('h1', 'Ajouter une tâche');
+
+        // Soumet le formulaire avec des données valides
+        $form = $crawler->selectButton('Save')->form([
+            'tache[description]' => 'Test Tâche',
+            'tache[statut]' => 'En cours',
+            'tache[duree]' => 2.5,
+            'tache[chantier]' => $chantier->getId(),
+            'tache[employe]' => $employe->getId(),
         ]);
 
-        self::assertResponseRedirects($this->path);
-
-        self::assertSame(1, $this->tacheRepository->count([]));
+        $this->client->submit($form);
+        $this->assertResponseRedirects('/admin/tache'); // Vérifie la redirection
+        $this->client->followRedirect(); // Suit la redirection
+        $this->assertResponseIsSuccessful(); // Vérifie que la page suivante s'affiche
+        $this->assertSelectorTextContains('.alert-success', 'Tâche créée avec succès'); // Vérifie le message flash
     }
 
     public function testShow(): void
     {
-        $this->markTestIncomplete();
-        $fixture = new Tache();
-        $fixture->setDescription('My Title');
-        $fixture->setStatut('My Title');
-        $fixture->setDate_de_debut('My Title');
-        $fixture->setDate_de_fin('My Title');
-        $fixture->setChantier('My Title');
-        $fixture->setEmployes('My Title');
+        $tache = new Tache();
+        $tache->setDescription('Test Tâche');
+        $tache->setDuree(2.5);
 
-        $this->manager->persist($fixture);
+        $this->manager->persist($tache);
         $this->manager->flush();
 
-        $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getId()));
-
-        self::assertResponseStatusCodeSame(200);
-        self::assertPageTitleContains('Tache');
-
-        // Use assertions to check that the properties are properly displayed.
+        $this->client->request('GET', '/admin/tache/' . $tache->getId());
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('h1', 'Détails de la tâche');
     }
 
     public function testEdit(): void
     {
-        $this->markTestIncomplete();
-        $fixture = new Tache();
-        $fixture->setDescription('Value');
-        $fixture->setStatut('Value');
-        $fixture->setDate_de_debut('Value');
-        $fixture->setDate_de_fin('Value');
-        $fixture->setChantier('Value');
-        $fixture->setEmployes('Value');
+        // Créez un chantier et un employé pour les tests
+        $chantier = new Chantier();
+        $chantier->setNom('Test Chantier');
+        $this->manager->persist($chantier);
 
-        $this->manager->persist($fixture);
+        $employe = new Employe();
+        $employe->setNom('Test');
+        $employe->setPrenom('Employe');
+        $this->manager->persist($employe);
+
+        $tache = new Tache();
+        $tache->setDescription('Test Tâche');
+        $tache->setDuree(2.5);
+        $tache->setChantier($chantier);
+        $tache->addEmploye($employe);
+
+        $this->manager->persist($tache);
         $this->manager->flush();
 
-        $this->client->request('GET', sprintf('%s%s/edit', $this->path, $fixture->getId()));
+        $crawler = $this->client->request('GET', '/admin/tache/' . $tache->getId() . '/edit');
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('h1', 'Modifier la tâche');
 
-        $this->client->submitForm('Update', [
-            'tache[description]' => 'Something New',
-            'tache[statut]' => 'Something New',
-            'tache[date_de_debut]' => 'Something New',
-            'tache[date_de_fin]' => 'Something New',
-            'tache[chantier]' => 'Something New',
-            'tache[employes]' => 'Something New',
+        $form = $crawler->selectButton('Enregistrer')->form([
+            'tache[description]' => 'Tâche Modifiée',
+            'tache[statut]' => 'En cours',
+            'tache[duree]' => 3.0,
+            'tache[chantier]' => $chantier->getId(),
+            'tache[employe]' => $employe->getId(),
         ]);
 
-        self::assertResponseRedirects('/tache/');
-
-        $fixture = $this->tacheRepository->findAll();
-
-        self::assertSame('Something New', $fixture[0]->getDescription());
-        self::assertSame('Something New', $fixture[0]->getStatut());
-        self::assertSame('Something New', $fixture[0]->getDate_de_debut());
-        self::assertSame('Something New', $fixture[0]->getDate_de_fin());
-        self::assertSame('Something New', $fixture[0]->getChantier());
-        self::assertSame('Something New', $fixture[0]->getEmployes());
+        $this->client->submit($form);
+        $this->assertResponseRedirects('/admin/tache');
+        $this->client->followRedirect();
+        $this->assertSelectorTextContains('.alert-success', 'Tâche modifiée avec succès');
     }
 
-    public function testRemove(): void
+    public function testDelete(): void
     {
-        $this->markTestIncomplete();
-        $fixture = new Tache();
-        $fixture->setDescription('Value');
-        $fixture->setStatut('Value');
-        $fixture->setDate_de_debut('Value');
-        $fixture->setDate_de_fin('Value');
-        $fixture->setChantier('Value');
-        $fixture->setEmployes('Value');
+        // Créez un chantier et un employé pour les tests
+        $chantier = new Chantier();
+        $chantier->setNom('Test Chantier');
+        $this->manager->persist($chantier);
 
-        $this->manager->persist($fixture);
+        $employe = new Employe();
+        $employe->setNom('Test');
+        $employe->setPrenom('Employe');
+        $this->manager->persist($employe);
+
+        $tache = new Tache();
+        $tache->setDescription('Test Tâche');
+        $tache->setDuree(2.5);
+        $tache->setStatut('En cours');
+        $tache->setChantier($chantier);
+        $tache->addEmploye($employe);
+
+        $this->manager->persist($tache);
         $this->manager->flush();
 
-        $this->client->request('GET', sprintf('%s%s', $this->path, $fixture->getId()));
-        $this->client->submitForm('Delete');
+        $crawler = $this->client->request('GET', '/admin/tache/' . $tache->getId());
+        $this->assertResponseIsSuccessful();
 
-        self::assertResponseRedirects('/tache/');
-        self::assertSame(0, $this->tacheRepository->count([]));
+        $form = $crawler->selectButton('Supprimer')->form();
+        $this->client->submit($form);
+        $this->assertResponseRedirects('/admin/tache');
+        $this->client->followRedirect();
+        $this->assertSelectorTextContains('.alert .alert-success', 'Tâche supprimée avec succès');
     }
 }

@@ -37,9 +37,6 @@ class Functions
         return true; // L'employé est disponible
     }
 
-    
-
-
     /**
      * Calcule la durée d'une tâche en jours et heures.
      *

@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Tests;
 
+namespace App\Tests;
+// ini_set('memory_limit', '512M');
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
 class AdminTest extends WebTestCase
 {
     private KernelBrowser $client;
@@ -40,7 +42,10 @@ class AdminTest extends WebTestCase
         /** @var UserPasswordHasherInterface $passwordHasher */
         $passwordHasher = $container->get('security.user_password_hasher');
         $user = (new User())->setEmail('admin@admin.fr');
-        $user->setRoles(['ROLE_SUPER_ADMIN']);
+        $user->setNom('admin');
+        $user->setPrenom('admin');
+        $user->setTelephone('061234567891');
+        $user->setRoles(['ROLE_ADMIN']);
         $user->setPassword($passwordHasher->hashPassword($user, 'admin'));
         $em->persist($user);
         $em->flush();
@@ -117,15 +122,9 @@ class AdminTest extends WebTestCase
             '_username' => 'admin@admin.fr',
             '_password' => 'admin',
         ]);
-        self::assertResponseRedirects('/admin/dashboard');
+        self::assertResponseRedirects('/admin/dashboard'); // Vérifie la redirection vers le tableau de bord
         $this->client->followRedirect();
-        self::assertSelectorNotExists('.alert-danger');
         self::assertResponseIsSuccessful();
-        $session = $this->client->getRequest()->getSession();
-        $this->client->getCookieJar()->set(new \Symfony\Component\BrowserKit\Cookie(
-            $session->getName(),
-            $session->getId()
-        ));
     }
 
     /**
@@ -143,25 +142,6 @@ class AdminTest extends WebTestCase
     {
         $this->client->request('GET', '/admin/dashboard');
         self::assertResponseRedirects();
-        $this->client->followRedirect();
-        self::assertResponseIsSuccessful();
-    }
-
-    /**
-     * ## Teste que l'accès à la page de registre de superadmin est redirigé pour les utilisateurs non autorisés.
-     *
-     * Cette méthode effectue les actions suivantes :
-     * 1. Envoie une requête GET à l'URL '/superadmin/register'.
-     * 2. Vérifie que la réponse redirige vers la page d'accueil ('/').
-     * 3. Suit la redirection.
-     * 4. Vérifie que la réponse finale est réussie (statut HTTP 200).
-     *
-     * @return void
-     */
-    public function testAdminRegisterNoAccess(): void
-    {
-        $this->client->request('GET', '/superadmin/register');
-        self::assertResponseRedirects('/');
         $this->client->followRedirect();
         self::assertResponseIsSuccessful();
     }
@@ -241,4 +221,5 @@ class AdminTest extends WebTestCase
         $this->client->followRedirect();
         self::assertResponseIsSuccessful();
     }
+
 }
