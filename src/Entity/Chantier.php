@@ -17,7 +17,7 @@ class Chantier
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(inversedBy: 'chantierDirige', targetEntity: Employe::class)]
+    #[ORM\ManyToOne(inversedBy: 'chantierDirige', targetEntity: Employe::class)]
     #[ORM\JoinColumn(nullable: false)]
     private ?Employe $chef_de_chantier = null;
 
