@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="ROW">
-        <h1 class="TitlePage">Client index</h1>
+        <h1 class="TitlePage">Liste des clients</h1>
         <a class="BtnEmploye" href="{{ path('app_client_new') }}">+ Nouvelle fiche client</a>
     </div>
 
@@ -34,7 +34,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Il n'y a aucun clients référencés pour le moment.</td>
             </tr>
         {% endfor %}
         </tbody>
