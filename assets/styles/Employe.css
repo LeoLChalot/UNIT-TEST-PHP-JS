@@ -7,11 +7,7 @@
     margin-top: 1vh;
     margin-left: 5vw;
     width: auto;
-    background-color: #23362F;
-    padding-top: 0.5vh;
-    padding-bottom: 0.5vh;
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding: 0.5vh 2vw;
     border-radius: 15px;
     color: white;
     font-family: 'Roboto';
@@ -21,6 +17,19 @@
 
 .table {
     color: #23362F;
+}
+
+.table th {
+    background-color: #23362F;
+    color: white;
+}
+
+.table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tr:nth-child(odd) {
+    background-color: #e6e6e6;
 }
 
 #employe {
@@ -65,20 +74,23 @@
     height: 10vh !important;
 }
 
-.FormNewEmploye button {
+.form-btn-add{
+    position: absolute;
+    right: 2vw;
+    bottom: 5vh;
     height: 4vh;
-    margin-top: 10%;
-    margin-left: 72vw;
     width: auto;
-    background-color: #1F8861;
-    padding-top: 0.5vh;
-    padding-bottom: 0.5vh;
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding: 0.5vh 2vw;
     border-radius: 15px;
     color: white;
     font-family: 'Roboto';
     text-decoration: none;
     font-weight: bold;
+    background-color: #1F8861;
     border: none;
+    transition: 0.3s ease all;
+}
+
+.form-btn-add:hover{
+    background-color: #10553c;
 }

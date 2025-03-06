@@ -49,11 +49,21 @@ header {
 
 .btnCentralHeaderLogout {
     font-weight: bold;
-    padding: 1vh 5vw 1vh 5vw;
+    padding: 1vh 1vw;
     color: white;
     background-color: #B0413E;
     border-radius: 15px;
     text-decoration: none;
+    transition: 0.3s all ease-in-out;
+}
+
+.btnCentralHeaderLogout:hover {
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px #bbbbbb inset;
+}
+
+.btnCentralHeaderLogout:hover svg path{
+    fill: #B0413E;
 }
 
 .btnCentralHeaderDash {

@@ -5,7 +5,7 @@
 {% block body %}
     <div class="ROW">
         <h1 class="TitlePage">Ajouter une tâche</h1>
-        <a class="BtnEmploye" href="{{ path('app_tache_index') }}">Retour à la liste des tâches</a>
+        <a class="BtnEmploye a-btn" href="{{ path('app_tache_index') }}">Retour à la liste des tâches</a>
     </div>
 
 
@@ -26,7 +26,7 @@
         {{ form_row(form.chantier) }}
         {{ form_row(form.employes) }}
     </div>
-        <button class="BtnSubmit">{{ button_label|default('Ajouter la tâche') }}</button>
+        <button class="form-btn-add">{{ button_label|default('Ajouter') }}</button>
     </div>
     {{ form_end(form) }}
 

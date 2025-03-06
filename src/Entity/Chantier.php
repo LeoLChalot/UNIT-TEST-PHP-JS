@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use App\Entity\Tache;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Persistence\Event\LifecycleEventArgs;
 
 #[ORM\Entity(repositoryClass: ChantierRepository::class)]
 class Chantier
@@ -57,6 +58,13 @@ class Chantier
 
     #[ORM\Column(length: 255)]
     private ?string $ville = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $statut = null;
+
+    #[ORM\Column(length: 255)]
+
+
 
     public function __construct()
     {
@@ -229,5 +237,31 @@ class Chantier
         $this->ville = $ville;
 
         return $this;
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(?string $statut): static
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    #[ORM\PrePersist]
+    #[ORM\PreUpdate]
+    public function updateStatut(LifecycleEventArgs $args): void
+    {
+        $now = new \DateTime();
+        if ($this->date_de_debut > $now) {
+            $this->statut = 'À venir';
+        } elseif ($this->date_de_debut <= $now && $this->date_de_fin >= $now) {
+            $this->statut = 'En cours';
+        } else {
+            $this->statut = 'Terminé';
+        }
     }
 }

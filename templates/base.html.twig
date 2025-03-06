@@ -16,7 +16,11 @@
 		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 	{% block stylesheets %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+		integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.css" rel="stylesheet">
+
 	{% endblock %}
 
 	{% block javascripts %}
@@ -27,6 +31,7 @@
 	<script src="//unpkg.com/@sjaakp/leaflet-search/dist/leaflet-search.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.min.js"></script>
 	<script src="/assets/531cbf94/leaflet-search.js"></script>
+	<script src="https://kit.fontawesome.com/36ea092baf.js" crossorigin="anonymous"></script>
 	{% endblock %}
 </head>
 
@@ -46,17 +51,19 @@
 
 				<a href="{{ path('app_dashboard') }}" class="btnHeader TITRE">EDIFIS PRO</a>
 				{% if 'ROLE_SUPER_ADMIN' in app.user.roles %}
-					<a href="{{ path('app_user_index') }}" class="btnHeader">Utilisateurs</a>
+				<a class="nav-link" href="{{ path('app_user_index') }}" class="btnHeader">Utilisateurs</a>
 				{% endif %}
 
-				<a href="{{ path('app_chantier_index') }}" class="btnHeader">Chantiers</a>
-				<a href="{{ path('app_metier_index') }}" class="btnHeader">Métiers</a>
-				<a href="{{ path('app_client_index') }}" class="btnHeader">Clients</a>
-				<a href="{{ path('app_tache_index') }}" class="btnHeader">Tâches</a>
-				<a href="{{ path('app_employe_index') }}" class="btnHeader">Employés</a>
+				<a class="nav-link" href="{{ path('app_chantier_index') }}" class="btnHeader">Chantiers</a>
+				<a class="nav-link" href="{{ path('app_metier_index') }}" class="btnHeader">Métiers</a>
+				<a class="nav-link" href="{{ path('app_client_index') }}" class="btnHeader">Clients</a>
+				<a class="nav-link" href="{{ path('app_tache_index') }}" class="btnHeader">Tâches</a>
+				<a class="nav-link" href="{{ path('app_employe_index') }}" class="btnHeader">Employés</a>
 
-				<a href="{{ path('app_dashboard') }}" class="btnCentralHeaderDash">DASHBOARD</a>
-				<a href="{{ path('app_logout') }}" class="btnCentralHeaderLogout ms-auto">Se déconnecter</a>
+				<a href="{{ path('app_dashboard') }}" class="btnCentralHeaderDash a-btn">DASHBOARD</a>
+				<a  class="btnCentralHeaderLogout ms-auto"href="{{ path('app_logout') }}">
+					<svg class="svg-icon icon-logout" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>
+				</a>
 			</nav>
 		</div>
 	</header>

@@ -22,7 +22,32 @@ final class ChantierController extends AbstractController
         ]);
     }
 
+    #[Route('/termine', name:'app_chantier_termine', methods: ['GET'])]
+    public function chantier_fini(ChantierRepository $chantierRepository): Response
+    {
 
+        return $this->render('chantier/index.html.twig', [
+            'chantiers' => $chantierRepository->findBy(['statut' => 'Terminé']),
+        ]);
+    }
+
+    #[Route('/encours', name: 'app_chantier_en_cours', methods: ['GET'])]
+    public function chantier_en_cours(ChantierRepository $chantierRepository): Response
+    {   
+        $chantiers = $chantierRepository->findBy(['statut' => 'En cours']);
+        return $this->render('chantier/index.html.twig', [
+            'chantiers' => $chantiers,
+        ]);
+    }
+
+    #[Route('/avenir', name: 'app_chantier_a_venir', methods: ['GET'])]
+    public function chantier_a_venir(ChantierRepository $chantierRepository): Response
+    {
+        $chantiers = $chantierRepository->findBy(['statut' => 'A venir']);
+        return $this->render('chantier/index.html.twig', [
+            'chantiers' => $chantiers,
+        ]);
+    }
 
     #[Route('/new', name: 'app_chantier_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response

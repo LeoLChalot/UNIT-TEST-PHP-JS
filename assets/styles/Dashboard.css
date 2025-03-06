@@ -17,12 +17,43 @@
 }
 
 .card {
+    position: relative;
     margin: 10%;
     padding: 5%;
     border: 2px solid #23362F;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     color: #23362F;
+    transition: 0.3s all ease-in-out;
+}
+
+.card:nth-child(odd) {
+    position: relative;
+    margin: 10%;
+    padding: 5%;
+    border: 2px solid #23362F;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    background-color: white;
+    color: #23362F;
+    transition: 0.3s all ease-in-out;
+}
+
+.card:nth-child(even) {
+    position: relative;
+    margin: 10%;
+    padding: 5%;
+    border: 2px solid #23362F;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    background-color: #23362F;
+    color: white;
+    transition: 0.3s all ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 10px 5px #cecece;
 }
 
 .card p {
@@ -30,11 +61,6 @@
     font-weight: bold;
     font-size: 5rem;
     bottom: 2vw;
-}
-
-.black {
-    background-color: #23362F;
-    color: white;
 }
 
 /* __________________ */
@@ -81,7 +107,101 @@
 }
 
 .BtnDetails {
-
     background-color: #375e4f !important;
+}
 
+
+.a-btn {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+    background-color: #375e4f;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.3s all ease-in-out;
+}
+
+.a-btn:hover {
+    background-color: #23362F;
+    color: white;
+}
+
+.a-detail{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.card:nth-child(odd) .a-detail svg path{
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0.2em;
+    cursor: pointer;
+    fill: rgba(35, 54, 47, 0.5) ;
+}
+.card:nth-child(even) .a-detail svg path{
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0.2em;
+    cursor: pointer;
+    fill: rgb(255, 255, 255) ;
+}
+
+.nav-link {
+    display: inline-block;
+    color: rgb(35, 54, 47);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 49%, rgba(255, 255, 255, 0.5) 100%);
+    text-decoration: none;
+    padding: 1vh 1vw;
+    border-radius: 8px;
+    transition: 0.5s all ease-in-out;
+}
+
+.nav-link:hover {
+    background: linear-gradient(180deg, rgba(255,255,255,1) 49%, rgba(35, 54, 47, 0.5) 100%);
+    color: rgb(35, 54, 47);
+}
+
+/* ICON SVG */
+svg{
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0.2em;
+    cursor: pointer;
+    background-color: none;
+}
+
+.btnSupprimer{
+    background-color: none;
+}
+
+.svg-icon {
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0.2em;
+    cursor: pointer;
+    background-color: none;
+}
+
+.svg-icon path {
+    fill: #686868;
+    transition: 0.1s fill 200ms;
+}
+
+.icon-logout path{
+    fill: #ffffff;
+}
+
+.icon-trash:hover path{
+    fill: #B0413E;
+}
+
+.icon-edit:hover path{
+    fill: #375e4f;
+}
+
+.icon-show:hover path{
+    fill: #375e4f;
 }
