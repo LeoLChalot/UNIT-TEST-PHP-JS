@@ -36,7 +36,7 @@ class AppFixtures extends Fixture
         $manager->persist($user1);
 
         $user2 = new User;
-        $user2->setNom('classique');
+        $user2->setNom('admin');
         $user2->setPrenom('admin');
         $user2->setTelephone('061234567891');
         $user2->setEmail('admin@admin.fr');
@@ -150,9 +150,11 @@ class AppFixtures extends Fixture
         $client3 = new Client();
         $client3->setNom('Moreau');
         $client3->setTelephone('061234567800');
-
         $manager->persist($client3);
 
         $manager->flush();
+
+        
+
     }
 }
