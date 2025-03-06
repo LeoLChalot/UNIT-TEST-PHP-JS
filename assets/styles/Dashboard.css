@@ -66,11 +66,17 @@
     color: #B0413E;
 }
 
-.user-options a {
-    margin-left: 1vw;
-    padding: 1vh 2vw 1vh 2vw;
+.user-options {
 
+}
+
+.user-options a {
+    padding-top: 10vh;
+    width: 100vw;
+    margin-left: 0.7vw;
+    padding: 1vh 2vw 1vh 2vw;
     color: white;
     background-color: #B0413E;
     text-decoration: none;
+    text-align: center;
 }

@@ -29,7 +29,7 @@ class AppFixtures extends Fixture
         $user1->setNom('super');
         $user1->setPrenom('admin');
         $user1->setTelephone('061234567890');
-        $user1->setEmail('superadmin@admin.fr');
+        $user1->setEmail('s');
         $hashedPassword = $this->passwordHasher->hashPassword($user1, 'superadmin');
         $user1->setPassword($hashedPassword);
         $user1->setRoles(['ROLE_SUPER_ADMIN']);
