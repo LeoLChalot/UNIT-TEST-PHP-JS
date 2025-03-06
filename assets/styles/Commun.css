@@ -3,12 +3,12 @@
     padding: 0;
     text-decoration: none;
     list-style-type: none;
-    font-family: 'avenir', sans-serif!important;
+    font-family: 'Roboto', sans-serif !important;
 }
 
 .TitlePage {
     color: #23362F;
-
+    font-family: 'Roboto';
     font-weight: bold;
 }
 
@@ -27,7 +27,9 @@ header {
     background-color: white;
 }
 
-
+.navBase {
+    margin-left: 5vw;
+}
 
 .btnHeader, .btnCentralHeader {
     margin-left: 1vw;
@@ -48,6 +50,16 @@ header {
     padding: 1vh 5vw 1vh 5vw;
     color: white;
     background-color: #B0413E;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.btnCentralHeaderDash {
+    margin-left: 5vw;
+    font-weight: bold;
+    padding: 1vh 5vw 1vh 5vw;
+    color: white;
+    background-color: #23362F;
     border-radius: 15px;
     text-decoration: none;
 }
