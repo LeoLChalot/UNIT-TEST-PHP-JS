@@ -3,8 +3,8 @@
 {% block title %}Chantier{% endblock %}
 
 {% block body %}
-    <h1>Chantier</h1>
-
+<h1>Chantier</h1>
+<div style="display: flex">
     <table class="table">
         <tbody>
             <tr>
@@ -32,23 +32,37 @@
                 <td>
                     <ul>
                         {% for tache in chantier.taches %}
-                            <li>
-                                {{ tache.description }} : {{ tache.duree }} 
-                                jour{% if tache.duree > 1 %}s{% endif %} 
-                                ({{ tache.statut }})
-                            </li>
+                        <li>
+                            {{ tache.description }} : {{ tache.duree }}
+                            jour{% if tache.duree > 1 %}s{% endif %}
+                            ({{ tache.statut }})
+                        </li>
                         {% else %}
-                            <li>Aucune tâche</li>
+                        <li>Aucune tâche</li>
                         {% endfor %}
                     </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Adresse
+                </th>
+                <td>
+                    <p id="adresse">32 rue des vignes, Cachan</p>
                 </td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_chantier_index') }}">Retour à la liste</a>
+    <div id="map" style="height:300px;width:600px;"></div>
+</div>
 
-    <a href="{{ path('app_chantier_edit', {'id': chantier.id}) }}">Modifier</a>
 
-    {{ include('chantier/_delete_form.html.twig') }}
+<a href="{{ path('app_chantier_index') }}">Retour à la liste</a>
+
+<a href="{{ path('app_chantier_edit', {'id': chantier.id}) }}">Modifier</a>
+
+{{ include('chantier/_delete_form.html.twig') }}
+
+
 {% endblock %}

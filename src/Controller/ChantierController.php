@@ -79,4 +79,5 @@ final class ChantierController extends AbstractController
 
         return $this->redirectToRoute('app_chantier_index', [], Response::HTTP_SEE_OTHER);
     }
+
 }

@@ -17,7 +17,7 @@
                 <th>Responsable</th>
                 <th>Date de début</th>
                 <th>Date de fin</th>
-                <th>Tâches</th>
+                <th>Adresse</th>
                 <th>Status</th>
                 <th>Actions</th>
             </tr>
@@ -32,15 +32,7 @@
                 <td>{{ chantier.dateDeFin ? chantier.dateDeFin|date('Y-m-d') : '' }}</td>
                 <td>
                     <ul>
-                        {% for tache in chantier.taches %}
-                            <li>
-                                {{ tache.description }} : {{ tache.duree }} 
-                                jour{% if tache.duree > 1 %}s{% endif %} 
-                                ({{ tache.statut }})
-                            </li>
-                        {% else %}
-                            <li>Aucune tâche</li>
-                        {% endfor %}
+                        {{ chantier.getNumeroDeLaVoie }} {{ chantier.getTypeDeVoie }} {{ chantier.getLibelleDeLaVoie }} {{ chantier.getCodePostal }} {{ chantier.getVille }}
                     </ul>
                 </td>
                 <td>
@@ -67,6 +59,8 @@
                 <td colspan="6">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
+
+        
         </tbody>
     </table>
 
