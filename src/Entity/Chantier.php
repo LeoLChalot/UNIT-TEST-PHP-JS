@@ -42,6 +42,21 @@ class Chantier
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_tache_suivante = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $numero_de_la_voie = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $type_de_voie = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $libelle_de_la_voie = null;
+
+    #[ORM\Column]
+    private ?int $code_postal = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $ville = null;
+
     public function __construct()
     {
         $this->taches = new ArrayCollection();
@@ -151,6 +166,66 @@ class Chantier
     public function setDateTacheSuivante(\DateTimeInterface $date_tache_suivante): static
     {
         $this->date_tache_suivante = $date_tache_suivante;
+
+        return $this;
+    }
+
+    public function getNumeroDeLaVoie(): ?string
+    {
+        return $this->numero_de_la_voie;
+    }
+
+    public function setNumeroDeLaVoie(string $numero_de_la_voie): static
+    {
+        $this->numero_de_la_voie = $numero_de_la_voie;
+
+        return $this;
+    }
+
+    public function getTypeDeVoie(): ?string
+    {
+        return $this->type_de_voie;
+    }
+
+    public function setTypeDeVoie(string $type_de_voie): static
+    {
+        $this->type_de_voie = $type_de_voie;
+
+        return $this;
+    }
+
+    public function getLibelleDeLaVoie(): ?string
+    {
+        return $this->libelle_de_la_voie;
+    }
+
+    public function setLibelleDeLaVoie(string $libelle_de_la_voie): static
+    {
+        $this->libelle_de_la_voie = $libelle_de_la_voie;
+
+        return $this;
+    }
+
+    public function getCodePostal(): ?int
+    {
+        return $this->code_postal;
+    }
+
+    public function setCodePostal(int $code_postal): static
+    {
+        $this->code_postal = $code_postal;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): static
+    {
+        $this->ville = $ville;
 
         return $this;
     }

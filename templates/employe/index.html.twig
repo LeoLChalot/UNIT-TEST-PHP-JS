@@ -29,7 +29,7 @@
                 <td>{{ employe.prenom }}</td>
                 <td>{{ employe.telephone }}</td>
                 <td>{{ employe.getMetier.getLabel }}</td>
-                <td>{{ employe.estChefDeChantier ? 'Yes' : 'No' }}</td>
+                <td>{{ employe.estChefDeChantier ? 'Oui' : 'Non' }}</td>
                 <td>
                     <div class="ROW">
                         <a class="btn-preview" href="{{ path('app_employe_show', {'id': employe.id}) }}" class="btn btn-info btn-sm"><img class="btnListe" src="../Image/oeil.png"></a>

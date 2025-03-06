@@ -6,7 +6,6 @@ use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-
 class AdminTest extends WebTestCase
 {
     private KernelBrowser $client;
@@ -14,12 +13,15 @@ class AdminTest extends WebTestCase
     protected function setUp(): void
     {
         // Create a new client to browse the application
-
         $this->client = static::createClient();
+        
+        $this->client->setServerParameters([
+            'HTTP_HOST' => '127.0.0.1:8000',
+        ]);
+
         $container = static::getContainer();
         $em = $container->get('doctrine.orm.entity_manager');
         $userRepository = $em->getRepository(User::class);
-
         // Remove any existing users from the test database
         foreach ($userRepository->findAll() as $user) {
             $em->remove($user);
@@ -39,14 +41,10 @@ class AdminTest extends WebTestCase
 
     public function testLoginInvalidMail(): void
     {
-        $this->client->setServerParameters([
-            'HTTP_HOST' => '127.0.0.1:8000',
-        ]);
-
         $this->client->request('GET', '/');
         self::assertResponseIsSuccessful();
 
-        $this->client->submitForm('Sign in', [
+        $this->client->submitForm('Se connecter', [
             '_username' => 'doesNotExist@example.com',
             '_password' => 'admin',
         ]);
@@ -60,14 +58,10 @@ class AdminTest extends WebTestCase
 
     public function testLoginInvalidPasword(): void
     {
-        $this->client->setServerParameters([
-            'HTTP_HOST' => '127.0.0.1:8000',
-        ]);
-
         $this->client->request('GET', '/');
         self::assertResponseIsSuccessful();
 
-        $this->client->submitForm('Sign in', [
+        $this->client->submitForm('Se connecter', [
             '_username' => 'admin@admin.fr',
             '_password' => 'bad-password',
         ]);
@@ -81,15 +75,11 @@ class AdminTest extends WebTestCase
 
     public function testLoginValidCredentials(): void
     {
-        $this->client->setServerParameters([
-            'HTTP_HOST' => '127.0.0.1:8000',
-        ]);
-
         $this->client->request('GET', '/');
         self::assertResponseIsSuccessful();
 
         // Success - Login with valid credentials is allowed.
-        $this->client->submitForm('Sign in', [
+        $this->client->submitForm('Se connecter', [
             '_username' => 'admin@admin.fr',
             '_password' => 'admin',
         ]);
@@ -110,10 +100,6 @@ class AdminTest extends WebTestCase
 
     public function testAdminDashboardAccess(): void
     {
-        $this->client->setServerParameters([
-            'HTTP_HOST' => '127.0.0.1:8000',
-        ]);
-    
         // Request the admin dashboard
         $this->client->request('GET', '/admin/dashboard');
     
@@ -129,10 +115,6 @@ class AdminTest extends WebTestCase
 
     public function testAdminRegisterNoAccess(): void
     {
-        $this->client->setServerParameters([
-            'HTTP_HOST' => '127.0.0.1:8000',
-        ]);
-    
         // Request the admin dashboard
         $this->client->request('GET', '/superadmin/register');
         
@@ -148,10 +130,6 @@ class AdminTest extends WebTestCase
 
     public function testMetierAccess(): void
     {
-        $this->client->setServerParameters([
-            'HTTP_HOST' => '127.0.0.1:8000',
-        ]);
-    
         // Request the admin dashboard
         $this->client->request('GET', '/admin/chantier');
     
@@ -167,10 +145,6 @@ class AdminTest extends WebTestCase
 
     public function testClientAccess(): void
     {
-        $this->client->setServerParameters([
-            'HTTP_HOST' => '127.0.0.1:8000',
-        ]);
-    
         // Request the admin dashboard
         $this->client->request('GET', '/admin/client');
     
@@ -185,11 +159,7 @@ class AdminTest extends WebTestCase
     }
 
     public function testEmployeAccess(): void
-    {
-        $this->client->setServerParameters([
-            'HTTP_HOST' => '127.0.0.1:8000',
-        ]);
-    
+    {    
         // Request the admin dashboard
         $this->client->request('GET', '/admin/employe');
     
@@ -205,10 +175,6 @@ class AdminTest extends WebTestCase
 
     public function testTacheAccess(): void
     {
-        $this->client->setServerParameters([
-            'HTTP_HOST' => '127.0.0.1:8000',
-        ]);
-    
         // Request the admin dashboard
         $this->client->request('GET', '/admin/tache');
     

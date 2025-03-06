@@ -4,8 +4,6 @@
 - [Commande Github](#commande-github)
 - [Hackathon](#hackathon)
   - [Présentation de l’entreprise cliente](#présentation-de-lentreprise-cliente)
-- [Technologies employées](#technologies-employées)
-- [Questions](#questions)
 
 # Commande Github
 ```powershell
@@ -62,3 +60,4 @@ des salariés sur les chantiers. L’objectif est d’éliminer les erreurs de p
 de l’administration et en garantissant une meilleure gestion des ressources humaines sur le terrain.
 Nous devons donc proposer une solution adaptée aux besoins spécifiques de l’entreprise, en prenant en
 compte ses contraintes organisationnelles et opérationnelles.
+
