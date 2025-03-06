@@ -60,6 +60,9 @@ Il faudra penser à adapter la variable d'environnement `DATABASE_URL` avec le n
 
 `php bin/console doctrine:migrations:migrate`
 
+Des données de tests existent est peuvent être générées grâce à la commande
+`php bin/console doctrine:fixtures:load`
+
 > [!WARNING]   Nous avons eu quelques soucis de comportement avec Composer
 > En cas de problème, contactez-nous
 
