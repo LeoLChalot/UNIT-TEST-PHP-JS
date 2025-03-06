@@ -41,7 +41,7 @@ class Employe
     private Collection $taches;
 
     #[ORM\Column]
-    private ?bool $disponible = null;
+    private ?bool $disponible = true;
 
     /**
      * @var Collection<int, Assignation>

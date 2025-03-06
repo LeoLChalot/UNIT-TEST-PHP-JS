@@ -36,7 +36,7 @@ class AppFixtures extends Fixture
         $manager->persist($user1);
 
         $user2 = new User;
-        $user2->setNom('classique');
+        $user2->setNom('admin');
         $user2->setPrenom('admin');
         $user2->setTelephone('061234567891');
         $user2->setEmail('admin@admin.fr');
@@ -102,7 +102,7 @@ class AppFixtures extends Fixture
         $employe3->setTelephone('061234567894');
         $employe3->setMetier($metier3);
         $employe3->setEstChefDeChantier(false);
-        $employe2->setDisponible(true);
+        $employe3->setDisponible(true);
         $manager->persist($employe3);
 
         $employe4 = new Employe();
@@ -111,7 +111,7 @@ class AppFixtures extends Fixture
         $employe4->setTelephone('061234567895');
         $employe4->setMetier($metier4);
         $employe4->setEstChefDeChantier(false);
-        $employe2->setDisponible(true);
+        $employe4->setDisponible(true);
         $manager->persist($employe4);
 
         $employe5 = new Employe();
@@ -120,7 +120,7 @@ class AppFixtures extends Fixture
         $employe5->setTelephone('061234567896');
         $employe5->setMetier($metier5);
         $employe5->setEstChefDeChantier(false);
-        $employe2->setDisponible(true);
+        $employe5->setDisponible(true);
         $manager->persist($employe5);
 
         $employe6 = new Employe();
@@ -129,7 +129,7 @@ class AppFixtures extends Fixture
         $employe6->setTelephone('061234567897');
         $employe6->setMetier($metier6);
         $employe6->setEstChefDeChantier(true);
-        $employe2->setDisponible(true);
+        $employe6->setDisponible(true);
         $manager->persist($employe6);
 
         $manager->flush();
@@ -150,9 +150,11 @@ class AppFixtures extends Fixture
         $client3 = new Client();
         $client3->setNom('Moreau');
         $client3->setTelephone('061234567800');
-
         $manager->persist($client3);
 
         $manager->flush();
+
+        
+
     }
 }
