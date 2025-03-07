@@ -64,7 +64,7 @@ Des données de tests existent est peuvent être générées grâce à la comman
 `php bin/console doctrine:fixtures:load`
 
 > [!WARNING]   Nous avons eu quelques soucis de comportement avec Composer
-> En cas de problème, contactez-nous
+> En cas de problème, contactez-nous, ou importez simplement le fichier de base de données
 
 # Hackathon
 En tant qu'intermédiaire, mon rôle est de mettre en relation des développeurs freelances avec des
